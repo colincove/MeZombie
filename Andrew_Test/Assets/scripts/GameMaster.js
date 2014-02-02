@@ -20,7 +20,7 @@ function Start () {
 	Debug.Log("menu difficulty: "+MenuBehaviour.difficulty);
 	spawnTimer = timer;
 	
-	//placeTree();
+
 	
 
 }
@@ -39,14 +39,16 @@ function spawnZombieTimer(){
 		
 		//pick random lane to spawn
 		var lane = Random.Range(1, numLanes+1);
-		
+	lane=2;
 		//translate lane as Y coordinate
-		var placeSpawnY = lane*mapY/(numLanes+1)-mapY/2;
+		var placeSpawnY = GameObject.Find("Lane"+lane).transform.localPosition.y-0.3;
+		var deviation = Random.Range(-0.6, 0.6);
+		placeSpawnY += deviation;
 		
 		//spawn at left and add velocity of 1
-		var spawnedZombie = Instantiate(zombie, new Vector3(-mapX/2-2,placeSpawnY,0), Quaternion.identity );
+		var spawnedZombie = Instantiate(zombie, new Vector3(-mapX/2-2,placeSpawnY,lane*10 + deviation), Quaternion.identity );
 		spawnedZombie.rigidbody2D.velocity.x=1.6;
-		spawnedZombie.GetComponent(ZombyBehaviour).setLane(lane);
+		spawnedZombie.GetComponent(GameObjectBehaviour).lane = lane;
 		
 		
 		//spawnedZombie.transform.localScale = Vector3(0.1,0.1,0.1);
@@ -58,16 +60,4 @@ function spawnZombieTimer(){
     Debug.Log("end timer");
     
   }
-}
-
-function placeTree(){
-
-	//pick random lane to spawn
-	var lane = Random.Range(1, numLanes+1);
-		
-	//translate lane as Y coordinate
-	var placeSpawnY = lane*mapY/(numLanes+1)-mapY/2;
-		
-	var spawnedTree = Instantiate(tree, new Vector3(0,placeSpawnY,0), Quaternion.identity );
-	spawnedTree.GetComponent(TreeBehaviour).setLane(lane);
 }
