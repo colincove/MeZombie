@@ -6,5 +6,5 @@ function Start () {
 }
 
 function Update () {
-	transform.localPosition.z  = transform.localPosition.y;
+	transform.localPosition.z  = transform.localPosition.y+5;
 }

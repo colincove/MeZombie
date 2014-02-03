@@ -24,11 +24,11 @@ btn_play: mouse up
  
 (Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
 
-UnloadTime: 0.293726 ms
+UnloadTime: 0.340064 ms
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 214.
-Total: 0.522504 ms (FindLiveObjects: 0.012770 ms CreateObjectMapping: 0.009851 ms MarkObjects: 0.085381 ms  DeleteObjects: 0.012405 ms)
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 198.
+Total: 0.544030 ms (FindLiveObjects: 0.013865 ms CreateObjectMapping: 0.009851 ms MarkObjects: 0.098516 ms  DeleteObjects: 0.012405 ms)
 
 menu difficulty: 1
  

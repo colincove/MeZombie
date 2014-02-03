@@ -27,7 +27,8 @@ function Start () {
 
 function Update () {
 	//4 lanes
-	spawnZombieTimer();
+	//spawnZombieTimer();
+	
 }
 
 function spawnZombieTimer(){
