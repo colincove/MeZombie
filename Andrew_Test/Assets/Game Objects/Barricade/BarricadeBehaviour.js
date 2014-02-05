@@ -23,7 +23,7 @@ function OnTriggerEnter2D(collInfo : Collider2D){
 			if (zombieLane == thisLane){ // only allow zombie in the same lane to run past
 				collInfo.GetComponent(ZombieBehaviour).anim.SetBool("Run",true);
 				collInfo.gameObject.GetComponent(ZombieBehaviour).anim.SetBool("Attack",false);
-				collInfo.rigidbody2D.velocity.x = 1.6;
+				collInfo.rigidbody2D.velocity.x = collInfo.gameObject.GetComponent(ZombieBehaviour).speed;
 			}
 		}
 	}
@@ -38,6 +38,7 @@ function OnCollisionEnter2D (collInfo : Collision2D) {
 		collInfo.gameObject.rigidbody2D.velocity.x=0;
 		collInfo.gameObject.rigidbody2D.velocity.y=0;
 		collInfo.gameObject.GetComponent(ZombieBehaviour).anim.SetBool("Attack",true);
+		collInfo.gameObject.GetComponent(ZombieBehaviour).anim.SetBool("Run",false);
 		hp--;
 
 		if (hp<=0){

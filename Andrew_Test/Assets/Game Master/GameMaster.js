@@ -7,11 +7,18 @@ var timer: float = 60; // set duration time in seconds in the Inspector
 var spawnDifference: float = 2;
 private var spawnTimer:float;
 
+//get map size
 var mapSprite : Sprite;
 static var  mapX : float;
 static var  mapY : float;
 
 static var  numLanes:int = 4;
+
+//resource count
+var hooman_startingResource:int;
+var metal_startingResource:int;
+var gasoline_startingResource:int;
+var rock_startingResource:int;
 function Start () {
 
 	mapX = mapSprite.bounds.size.x;
@@ -20,7 +27,10 @@ function Start () {
 	Debug.Log("menu difficulty: "+MenuBehaviour.difficulty);
 	spawnTimer = timer;
 	
-
+	ResourceMaster.hooman = hooman_startingResource;
+	ResourceMaster.metal = metal_startingResource;
+	ResourceMaster.gasoline = gasoline_startingResource;
+	ResourceMaster.rock = rock_startingResource;
 	
 
 }
@@ -48,7 +58,7 @@ function spawnZombieTimer(){
 		
 		//spawn at left and add velocity of 1
 		var spawnedZombie = Instantiate(zombie, new Vector3(-mapX/2-2,placeSpawnY,lane*10 + deviation), Quaternion.identity );
-		spawnedZombie.rigidbody2D.velocity.x=1.6;
+		spawnedZombie.rigidbody2D.velocity.x=spawnedZombie.GetComponent(ZombieBehaviour).speed;
 		spawnedZombie.GetComponent(GameObjectBehaviour).lane = lane;
 		
 		
