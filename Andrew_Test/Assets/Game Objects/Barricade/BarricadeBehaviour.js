@@ -23,7 +23,6 @@ function OnTriggerEnter2D(collInfo : Collider2D){
 			if (zombieLane == thisLane){ // only allow zombie in the same lane to run past
 				collInfo.GetComponent(ZombieBehaviour).anim.SetBool("Run",true);
 				collInfo.gameObject.GetComponent(ZombieBehaviour).anim.SetBool("Attack",false);
-				collInfo.rigidbody2D.velocity.x = collInfo.gameObject.GetComponent(ZombieBehaviour).speed;
 			}
 		}
 	}

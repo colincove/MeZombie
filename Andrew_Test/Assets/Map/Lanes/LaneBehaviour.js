@@ -21,7 +21,6 @@ function OnMouseDown () {
 		
 		//spawn at left and add velocity of 1
 		var spawnedZombie = Instantiate(zombie, new Vector3(-GameMaster.mapX/2-2,placeSpawnY,0), Quaternion.identity );
-		spawnedZombie.rigidbody2D.velocity.x=spawnedZombie.GetComponent(ZombieBehaviour).speed;
 		spawnedZombie.GetComponent(GameObjectBehaviour).lane = lane;
 		
 		ResourceMaster.hooman--;

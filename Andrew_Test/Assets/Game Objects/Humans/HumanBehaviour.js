@@ -1,4 +1,6 @@
 ﻿#pragma strict
+import System.Collections.Generic;
+
 
 var anim:Animator;
 var STARTING_HP:int;
@@ -16,39 +18,56 @@ function Update () {
 
 private var firstZombie:Collider2D;
 
+var zombiesToAttack_max:int;
+private var zombiesToAttack_arr: List.<Collider2D> = new List.<Collider2D>();
 //for some reason this fires multiple times before exiting
 //The code below assumes this, it may have to change if this behaviour changes
 function OnTriggerEnter2D(collInfo : Collider2D){ 
 	if (collInfo.tag=="Zomby"){
 		//attack zombie
+
 		
-		//attack only first zombie encountered until it leaves the hit area
-		if (firstZombie==null){			
-			firstZombie = collInfo;
-		}
-		if (firstZombie==collInfo){
-			var zombieLane = collInfo.GetComponent(GameObjectBehaviour).lane;
-			var thisLane = GetComponent(GameObjectBehaviour).lane;
-			if (zombieLane == thisLane){ // only attack zombie in same lane
+		var zombieLane = collInfo.GetComponent(GameObjectBehaviour).lane;
+		var thisLane = GetComponent(GameObjectBehaviour).lane;
+		if (zombieLane == thisLane){ // only attack zombie in same lane
+			
+			//the first zombiesToAttack_max zombies will target the human
+			if (zombiesToAttack_arr.Count <zombiesToAttack_max  && !zombiesToAttack_arr.Contains(collInfo)){
+				zombiesToAttack_arr.Add(collInfo);
+				
+				//pythagoras
+				var distanceY:float = transform.position.y - collInfo.transform.position.y;
+				var distanceX:float = transform.position.x - collInfo.transform.position.x;
+				var distance:float = Mathf.Sqrt(distanceX*distanceX + distanceY*distanceY);
+			
+				//adjust velocity x and y so that the diagonal velocity is still speedX_start
+				collInfo.GetComponent(ZombieBehaviour).speedX = distanceX*collInfo.GetComponent(ZombieBehaviour).speedX_start/distance;
+				collInfo.GetComponent(ZombieBehaviour).speedY = distanceY*collInfo.GetComponent(ZombieBehaviour).speedX_start/distance;
+			}
+			//attack only first zombie encountered until it leaves the hit area
+			if (firstZombie==null){			
+				firstZombie = collInfo;
+			}	
+			if (firstZombie==collInfo){
 				anim.SetBool("Attack",true);
 				anim.SetBool("Idle",false);
 				
 				
 					
 				if (hp<=0){
-				//allow zombie to run past
+				//allow zombie to run past and reset conditions to kill zombie
 					collInfo.gameObject.GetComponent(ZombieBehaviour).anim.SetBool("Attack",false);
 					collInfo.gameObject.GetComponent(ZombieBehaviour).anim.SetBool("Run",true);
+					collInfo.GetComponent(ZombieBehaviour).speedX = collInfo.GetComponent(ZombieBehaviour).speedX_start;
+					collInfo.GetComponent(ZombieBehaviour).speedY = collInfo.GetComponent(ZombieBehaviour).speedY_start;
+					
 					firstZombie=null;
 				} else {
 				
-					//var force:float =     collInfo.gameObject.GetComponent(ZombieBehaviour).speed*(-3/1000f);
-               		//collInfo.gameObject.rigidbody2D.AddForce(new Vector2(force,0));
-               		
-               		//spawn blood
+               		//spawn blood splatter randomly
                		
                		var randomAllow = Random.Range(0, 100);
-               		if (randomAllow<30){
+               		if (randomAllow<30){ //30% chance blood will splatter
                			var randomX = Random.Range(-0.2, 0.2);
                			var randomY = Random.Range(-0.3, 0);
                		
@@ -73,7 +92,10 @@ function OnTriggerExit2D(collInfo : Collider2D){
 			anim.SetBool("Attack",false);
 			anim.SetBool("Idle",true);
 			firstZombie=null;
-
+			
+			collInfo.GetComponent(ZombieBehaviour).speedX = collInfo.GetComponent(ZombieBehaviour).speedX_start;
+			collInfo.GetComponent(ZombieBehaviour).speedY = collInfo.GetComponent(ZombieBehaviour).speedY_start;
+					
 		}
 		
 	}
@@ -82,7 +104,6 @@ function OnTriggerExit2D(collInfo : Collider2D){
 function OnCollisionEnter2D (collInfo : Collision2D) {
 	if (collInfo.gameObject.tag=="Zomby"){
 		var zombieLane:int = collInfo.gameObject.GetComponent(GameObjectBehaviour).lane;
-Debug.Log("zomby collide");
 	//zombie attack human
 		collInfo.gameObject.rigidbody2D.velocity.x=0;
 		collInfo.gameObject.rigidbody2D.velocity.y=0;

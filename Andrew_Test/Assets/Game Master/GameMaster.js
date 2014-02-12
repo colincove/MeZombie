@@ -50,7 +50,7 @@ function spawnZombieTimer(){
 		
 		//pick random lane to spawn
 		var lane = Random.Range(1, numLanes+1);
-	lane=2;
+		lane=2;
 		//translate lane as Y coordinate
 		var placeSpawnY = GameObject.Find("Lane"+lane).transform.localPosition.y-0.3;
 		var deviation = Random.Range(-0.6, 0.6);
@@ -58,7 +58,7 @@ function spawnZombieTimer(){
 		
 		//spawn at left and add velocity of 1
 		var spawnedZombie = Instantiate(zombie, new Vector3(-mapX/2-2,placeSpawnY,lane*10 + deviation), Quaternion.identity );
-		spawnedZombie.rigidbody2D.velocity.x=spawnedZombie.GetComponent(ZombieBehaviour).speed;
+		spawnedZombie.rigidbody2D.velocity.x=spawnedZombie.GetComponent(ZombieBehaviour).speedX;
 		spawnedZombie.GetComponent(GameObjectBehaviour).lane = lane;
 		
 		
