@@ -13,7 +13,7 @@ function Update () {
 
 
 function OnTriggerEnter2D (collInfo : Collider2D) {
-	if (collInfo.collider2D.tag=="Zomby"){
+	if (collInfo.collider2D.tag=="Zombie"){
 		var zombieLane:int = collInfo.GetComponent(GameObjectBehaviour).lane;
 		
 	}

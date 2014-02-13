@@ -1,5 +1,6 @@
 ﻿#pragma strict
 
+
 var STARTING_HP:int;
 private var hp:int;
 
@@ -12,34 +13,29 @@ function Start () {
 
 function Update () {
 
+	
 }
 
 
 function OnTriggerEnter2D(collInfo : Collider2D){
-	if (collInfo.tag=="Zomby"){
-		if (hp<=0){
-			var zombieLane = collInfo.GetComponent(GameObjectBehaviour).lane;
-			var thisLane = GetComponent(GameObjectBehaviour).lane;
-			if (zombieLane == thisLane){ // only allow zombie in the same lane to run past
-				collInfo.GetComponent(ZombieBehaviour).anim.SetBool("Run",true);
-				collInfo.gameObject.GetComponent(ZombieBehaviour).anim.SetBool("Attack",false);
-			}
+	if (collInfo.tag=="Zombie"){
+		var zombieLane = collInfo.GetComponent(GameObjectBehaviour).lane;
+		var thisLane = GetComponent(GameObjectBehaviour).lane;
+		if (hp<=0 && zombieLane == thisLane){
+			 // only allow zombie in the same lane to run past
+			collInfo.gameObject.GetComponent(ZombieBehaviour).anim.SetInteger("State",0);
+			//collInfo.GetComponent(ZombieBehaviour).speedX = collInfo.GetComponent(ZombieBehaviour).speedX_start;
+			//collInfo.GetComponent(ZombieBehaviour).speedY = collInfo.GetComponent(ZombieBehaviour).speedY_start;
+			
 		}
 	}
 }
 
 
 function OnCollisionEnter2D (collInfo : Collision2D) {
-	if (collInfo.gameObject.tag=="Zomby"){
-		var zombieLane:int = collInfo.gameObject.GetComponent(GameObjectBehaviour).lane;
-		//var thisLane = GetComponent(GameObjectBehaviour).lane;
-		//if (zombieLane == thisLane){
-		collInfo.gameObject.rigidbody2D.velocity.x=0;
-		collInfo.gameObject.rigidbody2D.velocity.y=0;
-		collInfo.gameObject.GetComponent(ZombieBehaviour).anim.SetBool("Attack",true);
-		collInfo.gameObject.GetComponent(ZombieBehaviour).anim.SetBool("Run",false);
-		hp--;
+	if (collInfo.gameObject.tag=="Zombie"){
 
+		hp--;
 		if (hp<=0){
 			anim.SetTrigger("Break");
 			collider2D.enabled = false;	
@@ -48,5 +44,6 @@ function OnCollisionEnter2D (collInfo : Collision2D) {
 			anim.SetTrigger("Break");
 			
 		}
+
 	}
 }
