@@ -9,16 +9,11 @@ function Start () {
 function Update () {
 	
 }
-function DoDamage(damage:int, attacker:GameObject){
+function DoDamage(damage:int){
 	hp-=damage;
 	if(hp<=0 && destroyed==0){
 		//flag for object death so that this method does not get called more than once
 		destroyed=1;
-		SendMessage("OnDestroyed", attacker);
-		var objects : GameObject[] = GameObject.FindGameObjectsWithTag("Target"); 
-		for(var oneObject : GameObject in objects)
-		{
-		    oneObject.BroadcastMessage("OnTargetDestroyed", gameObject);
-		}
+		SendMessage("OnDestroyed");
 	}
 }
