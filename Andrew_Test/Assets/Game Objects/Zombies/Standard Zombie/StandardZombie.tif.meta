@@ -1,0 +1,144 @@
+fileFormatVersion: 2
+guid: c665ae81e03c3964c82b1a1efc91a8e1
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: StandardZombie_0
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 776
+        width: 176
+        height: 166
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: StandardZombie_1
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 663
+        width: 87
+        height: 63
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: StandardZombie_2
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 571
+        width: 208
+        height: 372
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: StandardZombie_3
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 347
+        width: 84
+        height: 238
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: StandardZombie_4
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 367
+        width: 53
+        height: 219
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: StandardZombie_5
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 343
+        width: 67
+        height: 185
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: StandardZombie_6
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 43
+        width: 98
+        height: 249
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: StandardZombie_7
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 63
+        width: 44
+        height: 205
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: StandardZombie_8
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 10
+        width: 165
+        height: 260
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: StandardZombie_9
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 69
+        width: 66
+        height: 199
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: StandardZombie_10
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 323
+        width: 72
+        height: 217
+      alignment: 0
+      pivot: {x: .5, y: .5}
+  spritePackingTag: 
+  userData: 
