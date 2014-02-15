@@ -11,8 +11,20 @@ function Start () {
 }
 
 function Update () {
-	GameObject.Find("resourceStats_hooman").guiText.text=hooman+"";
-	GameObject.Find("resourceStats_metal").guiText.text=metal+"";
-	GameObject.Find("resourceStats_gasoline").guiText.text=gasoline+"";
-	GameObject.Find("resourceStats_rock").guiText.text=rock+"";
+	var resources_string = "h: "+padding(hooman)+" m: "+padding(metal)+" g: "+padding(gasoline)+ " r: "+padding(rock);
+
+	GameObject.Find("resourceStats").guiText.text=resources_string;
+}
+
+function padding(stat:int){
+
+
+	if (stat<10)
+		return "00"+stat;
+	else if (stat>=10 && stat<100)
+		return "0"+stat;
+	else if (stat < 1000)
+		return stat;
+	else
+		return "999";
 }

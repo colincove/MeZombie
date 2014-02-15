@@ -9,12 +9,18 @@ var STARTING_HP:int;
 var isMelee:boolean;
 
 var bloodSplatter:GameObject;
-private var hp:int = STARTING_HP;
+private var hp:int;
 
+private var firstZombie:GameObject;
 var zombiesToAttack_max:int;
 private var zombiesToAttack_arr: List.<GameObject> = new List.<GameObject>();
 
 private var allowTrigger:boolean=true;
+
+var power:float;
+
+var resource_arr:GameObject[];
+var resourceAmount_arr:int[];
 function Start () {
 	hp = STARTING_HP;
 }
@@ -33,20 +39,27 @@ function Update () {
 function OnTriggerEnter2D(collInfo : Collider2D){ 
 	if (allowTrigger){
 		if (collInfo.tag=="Zombie"){
+		
+		
+		
 			//attack zombie
 
 			var zombieLane = collInfo.GetComponent(GameObjectBehaviour).lane;
 			var thisLane = GetComponent(GameObjectBehaviour).lane;
 			if (zombieLane == thisLane){ // only attack zombie in same lane
 				if (hp>0){
+				
+				
 					//the first zombiesToAttack_max zombies will target the human
 					if (!zombiesToAttack_arr.Contains(collInfo.gameObject) 
 					&& zombiesToAttack_arr.Count<zombiesToAttack_max
-					 && !collInfo.GetComponent(ZombieBehaviour).isTargeting)
+					 && !collInfo.GetComponent(ZombieBehaviour).isTargeting){
 						zombiesToAttack_arr.Add(collInfo.gameObject);
+						}
+						
+						
 							
 					if (zombiesToAttack_arr.Contains(collInfo.gameObject)){
-						
 						//Set targeting boolean so the zombie doesnt pursue other attckers
 						collInfo.GetComponent(ZombieBehaviour).isTargeting=true;
 						
@@ -83,7 +96,7 @@ function OnTriggerExit2D(collInfo : Collider2D){  //not sure if necessary
 		if (zombieLane == thisLane){ 
 			anim.SetInteger("State",0);
 			
-			//resetZombieConditions(collInfo.gameObject);		
+			resetZombieConditions(collInfo.gameObject);		
 		}
 		
 	}
@@ -117,17 +130,19 @@ private function resetZombieConditions(zombie:GameObject){
 	zombie.GetComponent(ZombieBehaviour).speedY = zombie.GetComponent(ZombieBehaviour).speedY_start;	
 	zombie.GetComponent(ZombieBehaviour).isTargeting=false;
 	for (var z:GameObject in zombiesToAttack_arr){
-		z.GetComponent(ZombieBehaviour).anim.SetInteger("State",0);
-		z.GetComponent(ZombieBehaviour).speedX = z.GetComponent(ZombieBehaviour).speedX_start;
-		z.GetComponent(ZombieBehaviour).speedY = z.GetComponent(ZombieBehaviour).speedY_start;	
-		z.GetComponent(ZombieBehaviour).isTargeting=false;
+		if (z!=null){// if not killed off
+			z.GetComponent(ZombieBehaviour).anim.SetInteger("State",0);
+			z.GetComponent(ZombieBehaviour).speedX = z.GetComponent(ZombieBehaviour).speedX_start;
+			z.GetComponent(ZombieBehaviour).speedY = z.GetComponent(ZombieBehaviour).speedY_start;	
+			z.GetComponent(ZombieBehaviour).isTargeting=false;
+		}
 	}
 	
 	firstZombie=null;
 	zombiesToAttack_arr.Clear();
 }
 
-private var firstZombie:GameObject;
+
 private function attackZombie(zombie:GameObject){
 	//attack only first zombie encountered until it leaves the hit area
 	if (firstZombie==null){			
@@ -135,7 +150,12 @@ private function attackZombie(zombie:GameObject){
 	}	
 	if (firstZombie==zombie){
 		
-		anim.SetInteger("State",1);
+		zombie.GetComponent(ZombieBehaviour).reduceHP(power);
+		Debug.Log(name+": "+zombie.GetComponent(ZombieBehaviour).getHp());
+		if (zombie.GetComponent(ZombieBehaviour).isDead())
+			anim.SetInteger("State",0);
+		else
+			anim.SetInteger("State",1);
 
 		//spawn blood splatter randomly
 		
@@ -144,7 +164,19 @@ private function attackZombie(zombie:GameObject){
 			var randomX = Random.Range(-0.2, 0.2);
 			var randomY = Random.Range(-0.3, 0);
 		
-			Instantiate(bloodSplatter, new Vector3(zombie.transform.position.x+randomX,zombie.transform.position.y+randomY,zombie.transform.position.z), Quaternion.identity );
+			Instantiate(bloodSplatter, new Vector3(zombie.transform.position.x+randomX,zombie.transform.position.y+zombie.GetComponent(ZombieBehaviour).size/2+randomY,zombie.transform.position.z), Quaternion.identity );
 		}
 	}
+}
+
+function spawnResource(){
+
+
+	for (var r:int = 0; r<resource_arr.length; r++){
+		for (var a:int = 0; a<resourceAmount_arr[r]; a++){
+			Instantiate(resource_arr[r], transform.position, Quaternion.identity ).name = resource_arr[r].name;
+
+		}
+	}
+
 }
