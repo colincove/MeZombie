@@ -1,11 +1,13 @@
 ﻿#pragma strict
 //Teams: Zombies=0, Humans=1;
+public var lane:int=0;
 public var team:int=0;
 public var targeting:GameObject;
+public var gameObjectBehaviour:GameObjectBehaviour;
 public var targeting_list: List.<GameObject> = new List.<GameObject>();//I am targeting
 public var opponent_list: List.<GameObject> = new List.<GameObject>();//I am being targeted by
 function Start () {
-
+	gameObjectBehaviour  = gameObject.GetComponent("GameObjectBehaviour");
 }
 
 function Update () {
@@ -37,6 +39,7 @@ function ReTarget(newTarget:GameObject){
 //message
 function Target(target:GameObject){
 	targeting=target;
+	targeting_list.Add(target);
 	target.SendMessage("AddOpponent", gameObject);
 }
 function OnDestroy(){
