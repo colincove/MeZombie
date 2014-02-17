@@ -10,21 +10,21 @@ function Update () {
 
 }
 function OnTriggerEnter2D (collInfo : Collider2D) {
-	var otherTarget:Target = collInfo.gameObject.GetComponent("Target");
-	if(otherTarget!=null && targetComp!=null){
-		if(otherTarget.team!=targetComp.team && otherTarget.gameObjectBehaviour.lane==gameObjectBehaviour.lane){
-			var index:int=targetComp.targeting_list.IndexOf(collInfo.gameObject);
-			if(targetComp.targeting_list.IndexOf(collInfo.gameObject)==-1){
-				SendMessage("Target", collInfo.gameObject);
+	var otherGameObject:GameObjectBehaviour = collInfo.gameObject.GetComponent("GameObjectBehaviour");
+	if(otherGameObject!=null && targetComp!=null){
+		if(otherGameObject.targets.length>0){
+		//if this game object has a target. 
+			if(otherGameObject.team!=targetComp.team && otherGameObject.lane==targetComp.lane){		
+				SendMessage("TriggerTarget", collInfo.gameObject, SendMessageOptions.DontRequireReceiver);
 			}
-		}	
+		}
 	}
 }
 
 function OnTriggerExit2D (collInfo : Collider2D) {
-	var otherTarget:Target = collInfo.gameObject.GetComponent("Target");
+	var otherTarget:GameObjectBehaviour = collInfo.gameObject.GetComponent("GameObjectBehaviour");
 	if(otherTarget!=null && targetComp!=null){
-		if(otherTarget.team!=targetComp.team){
+		if(otherTarget.team!=targetComp.team && otherTarget.lane==targetComp.lane){
 			SendMessage("RemoveTarget", collInfo.gameObject);
 		}	
 	}

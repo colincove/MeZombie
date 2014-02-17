@@ -1,18 +1,16 @@
 ﻿#pragma strict
-private var targeter:Target;
+private var target:GameObject;
 public var damage:int=20;
 function Start () {
-	targeter=gameObject.GetComponent("Target");
 }
 
 function Update () {
-
+	if(target!=null){
+	}
 }
-function Attack(){
-	if(targeter!=null){
-		if(targeter.targeting!=null){
-			targeter.targeting.SendMessage("DoDamage", damage);
-		}
+function Attack(target:GameObject){
+	if(target!=null){
+		target.SendMessage("DoDamage", damage, SendMessageOptions.DontRequireReceiver);
 	}
 }
 function DoDamage(){

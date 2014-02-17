@@ -14,6 +14,6 @@ function DoDamage(damage:int){
 	if(hp<=0 && destroyed==0){
 		//flag for object death so that this method does not get called more than once
 		destroyed=1;
-		SendMessage("OnDestroyed");
+		SendMessage("OnDestroyed", gameObject, SendMessageOptions.DontRequireReceiver);
 	}
 }

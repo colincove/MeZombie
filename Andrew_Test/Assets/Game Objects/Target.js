@@ -2,12 +2,12 @@
 //Teams: Zombies=0, Humans=1;
 public var lane:int=0;
 public var team:int=0;
+public var newestTarget:GameObject;
 public var targeting:GameObject;
 public var gameObjectBehaviour:GameObjectBehaviour;
-public var targeting_list: List.<GameObject> = new List.<GameObject>();//I am targeting
-public var opponent_list: List.<GameObject> = new List.<GameObject>();//I am being targeted by
+public var targeting_list: List.<GameObject> = new List.<GameObject>();//I agro'ing
+public var opponent_list: List.<GameObject> = new List.<GameObject>();//I am being agro'd by
 function Start () {
-	gameObjectBehaviour  = gameObject.GetComponent("GameObjectBehaviour");
 }
 
 function Update () {
@@ -17,35 +17,44 @@ function Update () {
 function OnTargetDestroyed(target:GameObject){
 	if(target!=gameObject){
 		if(target==targeting){
-			SendMessage("RemoveTarget", target);
+			SendMessage("RemoveTarget", target, SendMessageOptions.DontRequireReceiver);
 		}
 	}
 }
 //messgae
 function RemoveTarget(targetComp:GameObject){
 	targeting_list.Remove(targetComp);
-	targetComp.SendMessage("RemoveOpponent", gameObject);
+	SendMessage("RemoveOpponent", gameObject, SendMessageOptions.DontRequireReceiver);
 	if(targetComp==targeting){
 		targeting=null;
 		if(targeting_list.Count>0){
-			SendMessage("ReTarget", targetComp);
+			SendMessage("ReTarget", targetComp, SendMessageOptions.DontRequireReceiver);
 		}
 	}
 }
 //messgae
 function ReTarget(newTarget:GameObject){
-	SendMessage("Target", newTarget);
+	newestTarget=newTarget;
+	SendMessage("Target", newTarget, SendMessageOptions.DontRequireReceiver);
 }
 //message
 function Target(target:GameObject){
+	newestTarget=target;
 	targeting=target;
 	targeting_list.Add(target);
-	target.SendMessage("AddOpponent", gameObject);
+	SendMessage("AddOpponent", gameObject, SendMessageOptions.DontRequireReceiver);
 }
-function OnDestroy(){
+function OnDestroyed(attacker:GameObject){
 	for (var opponent : GameObject in opponent_list) {
-		opponent.SendMessage("OnTargetDestroyed", gameObject);
+		opponent.SendMessage("OnTargetDestroyed", gameObject, SendMessageOptions.DontRequireReceiver);
 	}
+}
+function TriggerTarget(target:GameObject){
+	var index:int=targeting_list.IndexOf(target);
+	if(index==-1){
+	SendMessage("Target", target, SendMessageOptions.DontRequireReceiver);
+	}
+	
 }
 function AddOpponent(opponent:GameObject){
 	opponent_list.Add(opponent);
