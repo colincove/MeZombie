@@ -3,14 +3,14 @@ private var lastAttackTime:int;
 public var attackSpeed:int=500;//in milliseconds
 public var locomotionDelay:int=500;
 private var target:GameObject;
-private var targetHealth:HealthComponent;
 private var targetLists:TargetLists;
-function Start () {
+
+function Start() {
 	lastAttackTime=Time.time*1000;
 	targetLists = GetComponent("TargetLists");
 }
 
-function Update () {
+function Update() {
 	if(targetLists!=null){
 		if(targetLists.attackTargetingList.Count>0){
 		//if there are targets within attack range
@@ -22,36 +22,25 @@ function Update () {
 				SendMessage("Attack", target);
 				SendMessage("DelayLocomotion", locomotionDelay);
 				lastAttackTime=Time.time*1000;
-				if(targetHealth.destroyed){
-					SendMessage("OnTargetDestroyed", target);
-				}
+				
 			}
 		}else{
 			lastAttackTime=Time.time*1000;
 		}
 	}
 }
-function ReTarget(target:GameObject){	
+function ReTarget(newTarget:GameObject){	
+	target=newTarget;
 	lastAttackTime=Time.time*1000;
+}
+function SetTarget(newTarget:GameObject)
+{
+	target=newTarget;
+	lastAttackTime=Time.time*1000;
+
 }
 function Attack(){
 }
-function AttackTarget(newTarget:GameObject){
-	if(target==null){
-		target=newTarget;
-		targetHealth=target.GetComponent("HealthComponent");
-	}
-}
-function AttackRemoveTarget(removedTarget:GameObject){
-	if(target!=null){
-		if(removedTarget==target){
-			target=null;
-			if(targetLists.attackTargetingList.Count>0){
-				target=targetLists.attackTargetingList[0];
-				targetHealth=target.GetComponent("HealthComponent");
-			}
-		}
-	}
-}
+
 function DelayLocomotion(delay:int){
 }
