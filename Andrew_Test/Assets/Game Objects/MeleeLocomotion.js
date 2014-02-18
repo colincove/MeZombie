@@ -9,17 +9,18 @@ function Start () {
 }
 
 function Update () {
-	if(target==null){
-		//there is no target. Move to the right. 
-		vy=0;
-		vx=speed;
-	}else{
-		//there is a target. Move toward it using pythagoras
-		var dy:float = transform.position.y - target.transform.position.y;
-		var dx:float = transform.position.x - target.transform.position.x;
-		var a:float = Mathf.Atan2(dy, dx);
-		vy=-Mathf.Sin(a)*speed;
-		vx=-Mathf.Cos(a)*speed;
+	//there is no target. Move to the right. 
+	vy=0;
+	vx=speed;
+	if(target!=null ){
+		if(target.tag!="Barricade"){
+			//there is a target. Move toward it using pythagoras
+			var dy:float = transform.position.y - target.transform.position.y;
+			var dx:float = transform.position.x - target.transform.position.x;
+			var a:float = Mathf.Atan2(dy, dx);
+			vy=-Mathf.Sin(a)*speed;
+			vx=-Mathf.Cos(a)*speed;
+		}
 	}
 	
 	//if there is no delay on motion, continue moving
@@ -48,4 +49,9 @@ function AgroTarget(newTarget:GameObject){
 }
 function AgroReTarget(newTarget:GameObject){
 	target=newTarget;
+}
+function OnTargetDestroyed(destroyedTarget:GameObject){
+	if(target==destroyedTarget){
+		target=null;
+	}
 }

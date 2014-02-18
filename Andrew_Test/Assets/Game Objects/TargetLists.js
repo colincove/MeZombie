@@ -30,6 +30,8 @@ function OnDestroyed(attacker:GameObject){
 function OnTargetDestroyed(gameObject:GameObject){
 	SendMessage("RemoveAgroOpponent", gameObject, SendMessageOptions.DontRequireReceiver);
 	SendMessage("RemoveAttackOpponent", gameObject, SendMessageOptions.DontRequireReceiver);
+	SendMessage("RemoveAttackTarget", gameObject, SendMessageOptions.DontRequireReceiver);
+	SendMessage("RemoveAgroTarget", gameObject, SendMessageOptions.DontRequireReceiver);
 }
 function AddAgroOpponent(opponent:GameObject){
 	agroOpponentList.Add(opponent);
