@@ -37,21 +37,9 @@ function Update () {
 function DelayLocomotion(delay:int){
 	delayMotion=Time.time*1000+delay;
 }
-function AgroTarget(newTarget:GameObject){
-	var newTargetLists:TargetLists = newTarget.GetComponent("TargetLists");
-	if(newTargetLists==null || targetAgroLists==null){
-		target=newTarget;
-	}else if(newTargetLists.agroOpponentList.Count<targetAgroLists.agroOpponentList.Count){
-		//if there are less zombies agro'ing this new target, then target it. Spreads out the zombies. 
-		target=newTarget;
-		targetAgroLists=target.GetComponent("TargetLists");
-	}
-}
-function AgroReTarget(newTarget:GameObject){
+function SetTarget(newTarget:GameObject){	
 	target=newTarget;
 }
-function OnTargetDestroyed(destroyedTarget:GameObject){
-	if(target==destroyedTarget){
-		target=null;
-	}
+function ResetTarget(){	
+	target=null;
 }

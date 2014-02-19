@@ -33,6 +33,9 @@ function ReTarget(newTarget:GameObject){
 	target=newTarget;
 	lastAttackTime=Time.time*1000;
 }
+function ResetTarget(){
+	target=null;
+}
 function SetTarget(newTarget:GameObject)
 {
 	target=newTarget;
