@@ -38,7 +38,9 @@ function Start () {
 function Update () {
 	//4 lanes
 	//spawnZombieTimer();
-	
+	      if (Input.GetKey ("escape")) {
+			Application.Quit();
+		}
 }
 
 function spawnZombieTimer(){

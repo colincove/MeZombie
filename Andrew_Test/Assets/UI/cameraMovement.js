@@ -29,7 +29,23 @@
         minY = vertExtent - mapY / 2.0;
         maxY = mapY / 2.0 - vertExtent;
         
+       
 		if (maxX>minX){
+		
+		var mouseThreshold = 20;
+		Debug.Log(Input.mousePosition.x);
+			if (0 <= Input.mousePosition.x && Input.mousePosition.x <=mouseThreshold){
+				transform.Translate(Vector3(-3*Time.deltaTime,0,0));
+			}
+			if (Screen.width-mouseThreshold <= Input.mousePosition.x && Input.mousePosition.x <=Screen.width){
+				transform.Translate(Vector3(3*Time.deltaTime,0,0));
+			}
+			if (0 <= Input.mousePosition.y && Input.mousePosition.y <=mouseThreshold){
+				transform.Translate(Vector3(0,-3*Time.deltaTime,0));
+			}
+			if (Screen.height-mouseThreshold <= Input.mousePosition.y && Input.mousePosition.y <=Screen.height){
+				transform.Translate(Vector3(0,3*Time.deltaTime,0));
+			}
 			if (Input.GetAxis("Horizontal")){
 				transform.Translate(Vector3(Input.GetAxis("Horizontal")*5*Time.deltaTime,0,0));
 			}
@@ -64,5 +80,7 @@
         {
             Camera.main.orthographicSize = Mathf.Max(Camera.main.orthographicSize-.1, 2);
         }
+        
+
     }
 	
