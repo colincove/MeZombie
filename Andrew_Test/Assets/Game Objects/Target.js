@@ -6,7 +6,6 @@ public var newestTarget:GameObject;
 public var targeting:GameObject;
 public var gameObjectBehaviour:GameObjectBehaviour;
 public var targeting_list: List.<GameObject> = new List.<GameObject>();//I agro'ing
-public var opponent_list: List.<GameObject> = new List.<GameObject>();//I am being agro'd by
 function Start () {
 }
 
@@ -44,21 +43,10 @@ function Target(target:GameObject){
 	targeting_list.Add(target);
 	SendMessage("AddOpponent", gameObject, SendMessageOptions.DontRequireReceiver);
 }
-function OnDestroyed(attacker:GameObject){
-	for (var opponent : GameObject in opponent_list) {
-		opponent.SendMessage("OnTargetDestroyed", gameObject, SendMessageOptions.DontRequireReceiver);
-	}
-}
 function TriggerTarget(target:GameObject){
 	var index:int=targeting_list.IndexOf(target);
 	if(index==-1){
 	SendMessage("Target", target, SendMessageOptions.DontRequireReceiver);
 	}
 	
-}
-function AddOpponent(opponent:GameObject){
-	opponent_list.Add(opponent);
-}
-function RemoveOpponent(opponent:GameObject){
-	opponent_list.Remove(opponent);
 }

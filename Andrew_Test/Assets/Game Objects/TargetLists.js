@@ -7,17 +7,21 @@ public var attackOpponentList: List.<GameObject> = new List.<GameObject>();//I a
 
 function AgroTarget(targetComp:GameObject){
 	argoTargetingList.Add(targetComp);
+	targetComp.SendMessage("AddAgroOpponent",gameObject );
 }
 function RemoveAgroTarget(targetComp:GameObject){
 	argoTargetingList.Remove(targetComp);
+	targetComp.SendMessage("RemoveAgroOpponent",gameObject );
 }
 
 
 function AttackTarget(targetComp:GameObject){
 	attackTargetingList.Add(targetComp);
+	targetComp.SendMessage("AddAttackOpponent",gameObject );
 }
 function RemoveAttackTarget(targetComp:GameObject){
 	attackTargetingList.Remove(targetComp);
+	targetComp.SendMessage("RemoveAttackOpponent",gameObject );
 }
 function OnDestroyed(attacker:GameObject){
 	for (var opponent : GameObject in agroOpponentList) {

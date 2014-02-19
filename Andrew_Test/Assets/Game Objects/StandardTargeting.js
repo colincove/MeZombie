@@ -21,6 +21,12 @@ Debug.Log(target!=null);
 	}
 		
 }
+function AgroTarget(newTarget:GameObject){
+	if(target==null){
+	setMyTarget(newTarget);
+	SendMessage("SetTarget", newTarget);
+	}
+}
 function AttackTarget(newTarget:GameObject){
 if(target==null){
 	setMyTarget(newTarget);
@@ -34,7 +40,6 @@ function setMyTarget(newTarget:GameObject){
 		
 		targetHealth=target.GetComponent("HealthComponent");
 		}
-	
 }
 function SetTarget(newTarget:GameObject){
 	setMyTarget(newTarget);
@@ -43,7 +48,7 @@ function DoReTarget(){
 	if(targetLists.attackTargetingList.Count>0){
 		SendMessage("SetTarget", targetLists.attackTargetingList[0]);
 	}else{
-		SendMessage("SetTarget", null);
+		SendMessage("ResetTarget");
 	}
 }
 function AttackRemoveTarget(removedTarget:GameObject){

@@ -18,7 +18,7 @@ function RemoveTarget(target:GameObject){
 	targetComp.gameObjectBehaviour.gameObject.SendMessage("AgroRemoveTarget", target, SendMessageOptions.DontRequireReceiver);
 }
 function AddOpponent(target:GameObject){
-	targetComp.gameObjectBehaviour.gameObject.SendMessage("AddAgroOpponent",target, SendMessageOptions.DontRequireReceiver);
+	target.SendMessage("AddAgroOpponent",targetComp.gameObjectBehaviour.gameObject, SendMessageOptions.DontRequireReceiver);
 }
 
 //messages 

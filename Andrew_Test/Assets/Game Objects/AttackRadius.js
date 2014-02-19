@@ -1,5 +1,5 @@
 ﻿#pragma strict
-
+public var test:int=0;
 private var targetComp:Target;
 function Start () {
 	targetComp=gameObject.GetComponent("Target");
@@ -16,9 +16,6 @@ function OnTargetDestroyed(target:GameObject){
 function RemoveTarget(target:GameObject){
 	targetComp.gameObjectBehaviour.gameObject.SendMessage("AttackRemoveTarget",target, SendMessageOptions.DontRequireReceiver);
 }
-function AddOpponent(target:GameObject){
-	targetComp.gameObjectBehaviour.gameObject.SendMessage("AddAttackOpponent",target, SendMessageOptions.DontRequireReceiver);
-}
 
 //message
 
@@ -29,6 +26,4 @@ function AttackReTarget(newTarget:GameObject){
 function AttackTargetDestroyed(newTarget:GameObject){
 }
 function AttackRemoveTarget(newTarget:GameObject){
-}
-function AddAttackOpponent(newTarget:GameObject){
 }
