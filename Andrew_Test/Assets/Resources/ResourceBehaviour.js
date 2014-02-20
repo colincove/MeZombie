@@ -1,4 +1,5 @@
 ﻿#pragma strict
+public var resourceId=0;
 
 function Start () {
 	transform.position.x+=Random.Range(-.1,0.1);
@@ -11,10 +12,8 @@ function Update () {
 
 function OnMouseDown () {
 
+	ResourceMaster.AddResource(resourceId, 1);
 	
-	if (name=="Human Resource"){
-		ResourceMaster.hooman++;
-	}
 	Destroy(gameObject);
 	
 }

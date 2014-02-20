@@ -32,10 +32,10 @@ function OnDestroyed(attacker:GameObject){
 	}
 }
 function OnTargetDestroyed(gameObject:GameObject){
-	SendMessage("RemoveAgroOpponent", gameObject, SendMessageOptions.DontRequireReceiver);
-	SendMessage("RemoveAttackOpponent", gameObject, SendMessageOptions.DontRequireReceiver);
-	SendMessage("RemoveAttackTarget", gameObject, SendMessageOptions.DontRequireReceiver);
-	SendMessage("RemoveAgroTarget", gameObject, SendMessageOptions.DontRequireReceiver);
+	RemoveAgroOpponent(gameObject);
+	RemoveAttackOpponent(gameObject);
+	RemoveAttackTarget(gameObject);
+	RemoveAgroTarget(gameObject);
 }
 function AddAgroOpponent(opponent:GameObject){
 	agroOpponentList.Add(opponent);

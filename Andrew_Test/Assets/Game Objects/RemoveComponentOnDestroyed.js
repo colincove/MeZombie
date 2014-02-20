@@ -7,6 +7,6 @@ function Start () {
 function Update () {
 
 }
-function OnDestroyed(attacker:GameObject){	
+function OnDestroyedComplete(attacker:GameObject){	
 	Destroy(gameObject);
 }

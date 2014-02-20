@@ -11,7 +11,6 @@ var speedY:float;
 
 var isTargeting:boolean;
 
-
 var STARTING_HP:int;
 private var hp:int;
 

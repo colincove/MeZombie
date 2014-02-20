@@ -8,18 +8,12 @@ function Start () {
 }
 
 function Update () {
-Debug.Log(target!=null);
-	if(target!=null){
-	Debug.Log("hp "+targetHealth.hp+" destroyed: "+targetHealth.destroyed);
-		
-	}
 	if(targetHealth!=null){
 	if(targetHealth.destroyed){
 			SendMessage("OnTargetDestroyed", target);
 			DoReTarget();
 		}
 	}
-		
 }
 function AgroTarget(newTarget:GameObject){
 	if(target==null){
@@ -58,4 +52,7 @@ function AttackRemoveTarget(removedTarget:GameObject){
 			DoReTarget();
 		}
 	}
+}
+function OnTargetDestroyed(deadTarget:GameObject){
+	DoReTarget();
 }

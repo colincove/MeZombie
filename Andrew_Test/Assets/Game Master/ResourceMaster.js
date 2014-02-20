@@ -6,8 +6,23 @@ static var metal:int;
 static var gasoline:int;
 static var rock:int;
 
+
+
 function Start () {
 	
+}
+
+public static function AddResource(resourceId:int, add:int){
+	switch(resourceId){
+		case 0:
+			hooman+=add; 
+		case 1:
+			metal+=add;
+		case 2:
+			gasoline+=add;
+		case 3:
+			rock+=add;
+	}
 }
 
 function Update () {
