@@ -24,7 +24,7 @@ function Start () {
 	mapX = mapSprite.bounds.size.x;
 	mapY = mapSprite.bounds.size.y;
    
-	Debug.Log("menu difficulty: "+MenuBehaviour.difficulty);
+	//Debug.Log("menu difficulty: "+MenuBehaviour.difficulty);
 	spawnTimer = timer;
 	
 	ResourceMaster.hooman = hooman_startingResource;
@@ -70,7 +70,7 @@ function spawnZombieTimer(){
   if (timer > 0){
     //Debug.Log(timer);
   } else {
-    Debug.Log("end timer");
+   // Debug.Log("end timer");
     
   }
 }

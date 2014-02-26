@@ -66,7 +66,7 @@ function OnCollisionExit2D (collInfo : Collision2D) {
 		speedX = speedX_start;
 		speedY = speedY_start;
 		
-		Debug.Log("exited collider of "+collInfo.gameObject.tag);
+		//Debug.Log("exited collider of "+collInfo.gameObject.tag);
 		
 	}
 }

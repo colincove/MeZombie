@@ -33,7 +33,7 @@
 		if (maxX>minX){
 		
 		var mouseThreshold = 20;
-		Debug.Log(Input.mousePosition.x);
+		//Debug.Log(Input.mousePosition.x);
 			if (0 <= Input.mousePosition.x && Input.mousePosition.x <=mouseThreshold){
 				transform.Translate(Vector3(-3*Time.deltaTime,0,0));
 			}

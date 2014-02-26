@@ -1,5 +1,6 @@
 ﻿#pragma strict
 private var target:GameObject;
+private var agroTarget:GameObject;
 private var targetAgroLists:TargetLists;
 private var delayMotion:int=0;
 public var speed:float=3;
@@ -12,11 +13,11 @@ function Update () {
 	//there is no target. Move to the right. 
 	vy=0;
 	vx=speed;
-	if(target!=null ){
-		if(target.tag!="Barricade"){
+	if(agroTarget!=null ){
+		if(agroTarget.tag!="Barricade"){
 			//there is a target. Move toward it using pythagoras
-			var dy:float = transform.position.y - target.transform.position.y;
-			var dx:float = transform.position.x - target.transform.position.x;
+			var dy:float = transform.position.y - agroTarget.transform.position.y;
+			var dx:float = transform.position.x - agroTarget.transform.position.x;
 			var a:float = Mathf.Atan2(dy, dx);
 			vy=-Mathf.Sin(a)*speed;
 			vx=-Mathf.Cos(a)*speed;
@@ -42,4 +43,10 @@ function SetTarget(newTarget:GameObject){
 }
 function ResetTarget(){	
 	target=null;
+}
+function SetAgroTarget(newTarget:GameObject){	
+	agroTarget=newTarget;
+}
+function ResetAgroTarget(){	
+	agroTarget=null;
 }

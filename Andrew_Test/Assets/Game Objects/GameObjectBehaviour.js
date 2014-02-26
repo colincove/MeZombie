@@ -19,5 +19,5 @@ function Update () {
 }
 
 function DestroyMe(){
-	Destroy(gameObject);
+	//Destroy(gameObject);
 }

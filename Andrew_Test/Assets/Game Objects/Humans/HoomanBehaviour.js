@@ -151,7 +151,7 @@ private function attackZombie(zombie:GameObject){
 	if (firstZombie==zombie){
 		
 		zombie.GetComponent(ZombieBehaviour).reduceHP(power);
-		Debug.Log(name+": "+zombie.GetComponent(ZombieBehaviour).getHp());
+		//Debug.Log(name+": "+zombie.GetComponent(ZombieBehaviour).getHp());
 		if (zombie.GetComponent(ZombieBehaviour).isDead())
 			anim.SetInteger("State",0);
 		else

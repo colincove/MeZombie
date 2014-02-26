@@ -8,17 +8,18 @@ function Start () {
 }
 
 function Update () {
+
 	if(targetHealth!=null){
 	if(targetHealth.destroyed){
-			SendMessage("OnTargetDestroyed", target);
-			DoReTarget();
+		//	SendMessage("OnTargetDestroyed", target);
+			//DoReTarget();
 		}
 	}
 }
 function AgroTarget(newTarget:GameObject){
 	if(target==null){
-	setMyTarget(newTarget);
-	SendMessage("SetTarget", newTarget);
+		setMyTarget(newTarget);
+		SendMessage("SetTarget", newTarget);
 	}else{
 		targetAlone(newTarget);
 	}
@@ -28,7 +29,9 @@ function targetAlone(newTarget:GameObject){
 	//will spread zombies out.
 	var newTargetLists:TargetLists = newTarget.GetComponent("TargetLists"); 
 	if(newTargetLists!=null){
-		for(var agroTarget:GameObject in targetLists.argoTargetingList[0]){
+		for(var agroTarget:GameObject in targetLists.argoTargetingList){
+		if(agroTarget!=null){
+		
 			var agroTargetLists:TargetLists = agroTarget.GetComponent("TargetLists"); 
 			if(agroTargetLists!=null){
 				if(agroTargetLists.attackOpponentList.Count<targetLists.attackOpponentList.Count){
@@ -40,6 +43,7 @@ function targetAlone(newTarget:GameObject){
 					setMyTarget(newTarget);
 				}
 			}	
+		}
 		}
 		SendMessage("SetTarget", target);
 	}
