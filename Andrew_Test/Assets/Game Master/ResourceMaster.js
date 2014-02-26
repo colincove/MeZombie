@@ -12,16 +12,20 @@ function Start () {
 	
 }
 
-public static function AddResource(resourceId:int, add:int){
+public static function AddResource(resourceId:int, count:int){
 	switch(resourceId){
 		case 0:
-			hooman+=add; 
+			hooman+=count; 
+			break;
 		case 1:
-			metal+=add;
+			metal+=count;
+			break;
 		case 2:
-			gasoline+=add;
+			gasoline+=count;
+			break;
 		case 3:
-			rock+=add;
+			rock+=count;
+			break;
 	}
 }
 
