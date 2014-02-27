@@ -1,12 +1,13 @@
 ﻿#pragma strict
 
 var zombies_arr:GameObject[];
-static var zombieIndex:int;
+static var zombieIndex:int=-1;
 
 var  uiCamera:Camera;
 
+
 function Start () {
-	zombies_arr[0].GetComponent(ZombiePicker).setPicked();
+	//zombies_arr[0].GetComponent(ZombiePicker).setPicked();
 }
 
 function Update () {
