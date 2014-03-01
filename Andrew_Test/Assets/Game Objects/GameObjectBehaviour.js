@@ -2,7 +2,9 @@
 //Teams: Zombies=0, Humans=1;
 public var team:int=0;
 public var lane:int=0;
+
 public var yOffset:float;
+public var height:float;
 public var targets : Component[];
 function Start () {
 

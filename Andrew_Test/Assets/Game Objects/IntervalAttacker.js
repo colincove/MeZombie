@@ -1,7 +1,7 @@
 ﻿#pragma strict
 private var lastAttackTime:int;
-public var attackSpeed:int=500;//in milliseconds
-public var locomotionDelay:int=500;
+public var attackSpeed:int;//in milliseconds
+public var locomotionDelay:int;
 private var target:GameObject;
 
 function Start() {
@@ -14,7 +14,8 @@ function Update() {
 		//if there are targets within attack range
 			var time:int = Time.time*1000;
 			var diff:int=Time.time*1000-lastAttackTime;
-			if(Time.time*1000-lastAttackTime>attackSpeed)
+			
+			if(diff>attackSpeed)
 			{
 				SendMessage("Attack", target);
 				SendMessage("DelayLocomotion", locomotionDelay);
