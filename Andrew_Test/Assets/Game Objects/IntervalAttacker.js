@@ -23,6 +23,7 @@ function Update() {
 			}
 		}else{
 			lastAttackTime=Time.time*1000;
+			SendMessage("Idle", target);
 		}
 }
 function ReTarget(newTarget:GameObject){	
@@ -42,4 +43,8 @@ function Attack(){
 }
 
 function DelayLocomotion(delay:int){
+}
+
+function Idle(){
+
 }

@@ -25,5 +25,8 @@ function DoDamage(damage:int){
 		destroyed=1;
 		SendMessage("OnDestroyed", gameObject, SendMessageOptions.DontRequireReceiver);
 		SendMessage("OnDestroyedComplete", gameObject, SendMessageOptions.DontRequireReceiver);
+		
+		SendMessage("Die", gameObject, SendMessageOptions.DontRequireReceiver);
+		
 	}
 }
