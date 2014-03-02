@@ -1,4 +1,6 @@
 ﻿#pragma strict
+//The most basic componenet every diegetic game object should have
+
 //Teams: Zombies=0, Humans=1;
 public var team:int=0;
 public var lane:int=0;
@@ -18,5 +20,9 @@ function Start () {
 
 function Update () {
 	transform.localPosition.z  = transform.localPosition.y+5+yOffset;
+}
+
+function DestroyMe(){
+	Destroy(gameObject);
 }
 

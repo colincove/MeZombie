@@ -38,7 +38,7 @@ function RemoveAttackTarget(targetComp:GameObject){
 	attackTargetingList.Remove(targetComp);
 	targetComp.SendMessage("RemoveAttackOpponent",gameObject );
 }
-function OnDestroyed(attacker:GameObject){
+function OnKilled(attacker:GameObject){
 	Debug.Log("agroOpponentListCOUNT: "+agroOpponentList.Count);
 	/*for (var opponent : GameObject in agroOpponentList) {
 		Debug.Log("remove01: "+opponent);
@@ -58,6 +58,8 @@ function OnDestroyed(attacker:GameObject){
 		Debug.Log("attackOpponentList: "+i);
 		opponent.SendMessage("OnTargetDestroyed", gameObject, SendMessageOptions.DontRequireReceiver);
 	}
+	
+	
 }
 function OnTargetDestroyed(gameObject:GameObject){
 destroyedList.Add(gameObject);

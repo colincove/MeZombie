@@ -4,12 +4,14 @@ public var attackSpeed:int;//in milliseconds
 public var locomotionDelay:int;
 private var target:GameObject;
 
+private var dead:boolean;
 function Start() {
 	lastAttackTime=Time.time*1000;
 
 }
 
 function Update() {
+	if (!dead){
 		if(target!=null){
 		//if there are targets within attack range
 			var time:int = Time.time*1000;
@@ -25,6 +27,7 @@ function Update() {
 			lastAttackTime=Time.time*1000;
 			SendMessage("Idle", target);
 		}
+	}
 }
 function ReTarget(newTarget:GameObject){	
 	target=newTarget;
@@ -47,4 +50,8 @@ function DelayLocomotion(delay:int){
 
 function Idle(){
 
+}
+
+function OnKilled(){
+	dead=true;
 }

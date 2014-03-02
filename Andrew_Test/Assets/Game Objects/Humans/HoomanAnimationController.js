@@ -19,6 +19,9 @@ function Attack(){
 	anim.SetInteger("State",1);
 }
 
-function Die(){
+function OnKilled(){
 	anim.SetInteger("State",2);
+
+	
+	
 }
