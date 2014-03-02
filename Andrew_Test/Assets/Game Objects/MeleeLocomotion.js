@@ -8,7 +8,7 @@ private var dead:boolean;
 
 public var speed:float=3;
 public var targeting:AbstractTargeting;
-
+public var zombieWalk:boolean=true; //walk forward when there is no target to attack
 
 function Start () {
 }
@@ -17,7 +17,12 @@ function Update () {
 	if(!dead){
 		//there is no target. Move to the right. 
 		vy=0;
-		vx=speed;
+		if(zombieWalk){
+			vx=speed;//zombie. walk forward when there is no target;
+		}else{
+			vx=0;//its a human. do not walk when there is no target;
+		}
+		
 		agroTarget=targeting.getAgroTarget();
 		if(agroTarget!=null ){
 			if(agroTarget.tag!="Barricade" && agroTarget.tag!="Dead"){
