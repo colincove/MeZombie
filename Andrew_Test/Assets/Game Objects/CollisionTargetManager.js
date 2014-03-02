@@ -1,14 +1,15 @@
 ﻿#pragma strict
-private var targetComp:Target;
-private var gameObjectBehaviour:GameObjectBehaviour;
+public var targetComp:Target;
 public var collisionList: List.<GameObject> = new List.<GameObject>();//I am being agro'd by
-function Start () {
-	gameObjectBehaviour  = gameObject.GetComponent("GameObjectBehaviour");
-	targetComp=gameObject.GetComponent("Target");
-}
 
 function Update () {
-
+	for(var col:GameObject in collisionList){
+		var colGOB:GameObjectBehaviour = col.GetComponent("GameObjectBehaviour");
+		if(colGOB.dead){
+			targetComp.RemoveTarget(col);
+			collisionList.Remove(col);
+		}
+	}
 }
 function OnTriggerEnter2D (collInfo : Collider2D) {
 	var otherGameObject:GameObjectBehaviour = collInfo.gameObject.GetComponent("GameObjectBehaviour");
@@ -18,8 +19,9 @@ function OnTriggerEnter2D (collInfo : Collider2D) {
 		var index:int=collisionList.IndexOf(collInfo.gameObject);
 			if(otherGameObject.team!=targetComp.team && 
 			otherGameObject.lane==targetComp.lane &&
+			!otherGameObject.dead &&
 			index==-1){		
-				SendMessage("TriggerTarget", collInfo.gameObject, SendMessageOptions.DontRequireReceiver);
+				targetComp.TriggerTarget(collInfo.gameObject);
 				collisionList.Add(collInfo.gameObject);
 			}
 		}
@@ -30,7 +32,7 @@ function OnTriggerExit2D (collInfo : Collider2D) {
 	var otherTarget:GameObjectBehaviour = collInfo.gameObject.GetComponent("GameObjectBehaviour");
 	if(otherTarget!=null && targetComp!=null){
 		if(otherTarget.team!=targetComp.team && otherTarget.lane==targetComp.lane){
-			SendMessage("RemoveTarget", collInfo.gameObject);
+			targetComp.RemoveTarget(collInfo.gameObject);
 			collisionList.Remove(collInfo.gameObject);
 		}	
 	}
