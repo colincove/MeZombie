@@ -1,14 +1,21 @@
 ﻿#pragma strict
 public var targetComp:Target;
 public var collisionList: List.<GameObject> = new List.<GameObject>();//I am being agro'd by
+private var collisionRemovalList: List.<GameObject> = new List.<GameObject>();//I am being agro'd by
 
 function Update () {
 	for(var col:GameObject in collisionList){
 		var colGOB:GameObjectBehaviour = col.GetComponent("GameObjectBehaviour");
 		if(colGOB.dead){
 			targetComp.RemoveTarget(col);
+			collisionRemovalList.Add(col);
+		}
+	}
+	if(collisionRemovalList.Count!=0){
+		for(var col:GameObject in collisionRemovalList){
 			collisionList.Remove(col);
 		}
+		collisionRemovalList.Clear();
 	}
 }
 function OnTriggerEnter2D (collInfo : Collider2D) {
