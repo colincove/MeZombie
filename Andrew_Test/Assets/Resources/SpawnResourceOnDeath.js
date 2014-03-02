@@ -5,6 +5,6 @@ function Start(){
 function Update(){
 	
 }
-function OnDestroyed () {
+function OnKilled () {
 	var resClone = Instantiate(res, transform.position, transform.rotation);
 }
