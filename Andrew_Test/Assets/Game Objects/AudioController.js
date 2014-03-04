@@ -1,12 +1,18 @@
 ﻿#pragma strict
 
 
-private var hasDefaultSoundPlayed:boolean;
-var defaultSound: AudioSource;
+var walk: AudioSource;
+var idle: AudioSource;
+var attack: AudioSource;
+var die: AudioSource;
 
-var attacking: AudioSource;
-
-var dying: AudioSource;
+private function StopAllSounds(){
+	if (walk!=null) walk.Stop();
+	if (idle!=null) idle.Stop();
+	if (attack!=null) attack.Stop();
+	
+	if (die!=null) die.Stop();
+}
 
 function Start () {
 
@@ -16,29 +22,46 @@ function Update () {
 
 }
 
-function Idle(){
-	if (!hasDefaultSoundPlayed){
+function playWalkSound(){
+	if (walk!=null && !walk.isPlaying){
 		StopAllSounds();
-		defaultSound.Play();
-		hasDefaultSoundPlayed=true;
+		walk.Play();
 	}
 }
 
-function Attack(){
-	StopAllSounds();
-	attacking.Play();
-	hasDefaultSoundPlayed=false;
+function playIdleSound(){
+	if (idle!=null && !idle.isPlaying){
+		StopAllSounds();
+		idle.Play();
+	}
 }
 
-function OnKilled(){
-	StopAllSounds();
-	dying.Play();
+function playAttackSound(){
+	if (attack!=null){
+		StopAllSounds();
+		attack.Play();
+	}
+}
+
+function playDieSound(){
+	if (die!=null){
+		StopAllSounds();
+		die.Play();
+	}
 	
-	hasDefaultSoundPlayed=false;
+	if (name=="Melee Hooman"){
+		Debug.Log("dead sound");
+	}
 }
 
-private function StopAllSounds(){
-	defaultSound.Stop();
-	attacking.Stop();
-	dying.Stop();
+function FadeOutSound(sound:AudioSource){
+ 
+var i : int;
+ 
+    for (i = 9; i > 0; i--)
+    {
+        sound.volume = i * .1;
+        yield new WaitForSeconds (.5);
+    }
+    sound.Stop();
 }

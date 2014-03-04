@@ -1,5 +1,6 @@
 ﻿#pragma strict
 public var resourceId=0;
+private var isPickedUp;
 
 function Start () {
 	transform.position.x+=Random.Range(-.1,0.1);
@@ -12,8 +13,15 @@ function Update () {
 
 function OnMouseDown () {
 
-	ResourceMaster.AddResource(resourceId, 1);
+	if (!isPickedUp){
+		ResourceMaster.AddResource(resourceId, 1);
+		collider2D.enabled=false;
+		transform.localScale.x=0;
+		transform.localScale.y=0;
+		isPickedUp=true;
+	}
 	
+	yield WaitForSeconds(2);
 	Destroy(gameObject);
 	
 }
