@@ -2,7 +2,8 @@
 
 var zombies_arr:GameObject[];
 static var zombieIndex:int=-1;
-
+static var mouse_x:int=0;
+static var mouse_y:int=0;
 var  uiCamera:Camera;
 
 

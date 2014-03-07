@@ -23,3 +23,14 @@ function RemoveCreepObj(creepObj:GameObject){
 		}
 	}
 }
+function CanSpawn(x:int, y:int, lane:int){
+	if(creeps.Length>=lane){
+		for(var creepLane:Creep in creeps){
+			if(creepLane.lane==lane)
+			{
+				return creepLane.CanSpawn(x, y);
+			}
+		}
+	}
+	return false;
+}
