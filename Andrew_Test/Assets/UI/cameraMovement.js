@@ -1,5 +1,5 @@
 ﻿#pragma strict
-
+private var cam_enabled:boolean=true;
   private var  mapX : float;
   private  var  mapY : float;
  
@@ -16,7 +16,8 @@
     }
  
     function Update() {
-    
+    	if(cam_enabled){
+
     	mapX = GameMaster.mapX;
 		mapY = GameMaster.mapY;
 		
@@ -81,6 +82,12 @@
             Camera.main.orthographicSize = Mathf.Max(Camera.main.orthographicSize-.1, 2);
         }
         
-
+    	}
     }
 	
+function DisableCamera(){
+	cam_enabled=false;
+}
+function EnableCamera(){
+	cam_enabled=true;
+}
