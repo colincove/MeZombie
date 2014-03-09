@@ -47,8 +47,9 @@ function OnMouseDrag () {
 
 function OnMouseUp () {
 	cannot_spawn_clone.transform.position.x=10000;
-	ZombiePickerMaster.mouse_x=Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
-	ZombiePickerMaster.mouse_y=Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
+	ZombiePickerMaster.mouse_x=zombieDrag_destroyable.transform.position.x;
+	ZombiePickerMaster.mouse_y=zombieDrag_destroyable.transform.position.y;
+	Debug.Log("PICK X: "+ZombiePickerMaster.mouse_x+" Y: "+ZombiePickerMaster.mouse_y);
 	ZombiePickerMaster.zombieIndex=zombieIndex;
 	yield WaitForSeconds(0.02);
 	if (zombieDrag_destroyable!=null){

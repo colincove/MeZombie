@@ -56,6 +56,7 @@ function OnTriggerEnter2D (zombieSpawner : Collider2D) {
 				//placeSpawnY+=zombie.GetComponent(ZombieBehaviour).size/2;
 				
 				//spawn at left and add velocity of 1
+				Debug.Log("SPAWN X: "+ZombiePickerMaster.mouse_x+" Y: "+ZombiePickerMaster.mouse_y);
 				var spawnedZombie = Instantiate(zombie, new Vector3(ZombiePickerMaster.mouse_x,ZombiePickerMaster.mouse_y,0), Quaternion.identity );
 				spawnedZombie.GetComponent(GameObjectBehaviour).lane = lane;
 				current_lane_spawning=-1;
