@@ -35,7 +35,7 @@ function OnMouseDrag () {
 	if(can_spawn==false){
 		cannot_spawn_clone.transform.position.x=Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
 		cannot_spawn_clone.transform.position.y=Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
-		cannot_spawn_clone.transform.position.z=30;
+		cannot_spawn_clone.transform.position.z=zombieDrag_destroyable.transform.position.z-1;
 	}else{
 		cannot_spawn_clone.transform.position.x=10000;
 	}
