@@ -2,16 +2,21 @@
 public var changeTargetTime:int = 1000;
 public var damp:float = 5.0;
 public var landmarkList:List.<GameObject> = new List.<GameObject>();
+public var disable:boolean =false;
+
 private var currentLandmark:GameObject;
 private var lastChange:int=0;
 private var landmarkIndex:int=0;
 private var isActive:boolean=false;
 private var vx:float;
 private var vy:float;
+
 function Start () {
+	if(!disable){
 	if(landmarkList.Count>0){
 		StartMotion();
 		
+	}
 	}
 }
 

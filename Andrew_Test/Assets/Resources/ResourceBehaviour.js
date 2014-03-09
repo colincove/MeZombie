@@ -1,6 +1,6 @@
 ﻿#pragma strict
 public var resourceId=0;
-private var isPickedUp;
+private var isPickedUp:boolean=false;
 
 function Start () {
 	transform.position.x+=Random.Range(-.1,0.1);
