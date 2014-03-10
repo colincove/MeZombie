@@ -3,6 +3,7 @@
 var lane:int;
 var zombie: GameObject;
 var bigZombie: GameObject;
+var bomberZombie: GameObject;
 var gm:GameObject;
 var cm:CreepMaster;
 static var current_lane_spawning:int=-1;
@@ -46,39 +47,55 @@ function OnTriggerEnter2D (zombieSpawner : Collider2D) {
 	}
 	if(cm.CanSpawn(ZombiePickerMaster.mouse_x, ZombiePickerMaster.mouse_y, lane)){
 	
-	if (zombieSpawner.gameObject.name=="ZombieRespawn" && ZombiePickerMaster.zombieIndex>=0){
-		//Standard Zombie
-		if (ZombiePickerMaster.zombieIndex==0 ){
-			// If enough resources
-			if (ResourceMaster.hooman>=1){
-				//translate lane as Y coordinate
-				var placeSpawnY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
-				//placeSpawnY+=zombie.GetComponent(ZombieBehaviour).size/2;
-				
-				//spawn at left and add velocity of 1
-				Debug.Log("SPAWN X: "+ZombiePickerMaster.mouse_x+" Y: "+ZombiePickerMaster.mouse_y);
-				var spawnedZombie = Instantiate(zombie, new Vector3(ZombiePickerMaster.mouse_x,ZombiePickerMaster.mouse_y,0), Quaternion.identity );
-				spawnedZombie.GetComponent(GameObjectBehaviour).lane = lane;
-				current_lane_spawning=-1;
-				ResourceMaster.hooman-=1;
+		if (zombieSpawner.gameObject.name=="ZombieRespawn" && ZombiePickerMaster.zombieIndex>=0){
+			//Standard Zombie
+			if (ZombiePickerMaster.zombieIndex==0 ){
+				// If enough resources
+				if (ResourceMaster.hooman>=1){
+					//translate lane as Y coordinate
+					var placeSpawnY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
+					//placeSpawnY+=zombie.GetComponent(ZombieBehaviour).size/2;
+					
+					//spawn at left and add velocity of 1
+					Debug.Log("SPAWN X: "+ZombiePickerMaster.mouse_x+" Y: "+ZombiePickerMaster.mouse_y);
+					var spawnedZombie = Instantiate(zombie, new Vector3(ZombiePickerMaster.mouse_x,ZombiePickerMaster.mouse_y,0), Quaternion.identity );
+					spawnedZombie.GetComponent(GameObjectBehaviour).lane = lane;
+					current_lane_spawning=-1;
+					ResourceMaster.hooman-=1;
+				}
+			} 
+			else if(ZombiePickerMaster.zombieIndex==1){
+				// If enough resources
+				if (ResourceMaster.hooman>=5){
+					//translate lane as Y coordinate
+					placeSpawnY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
+					
+					//spawn at left and add velocity of 1
+					spawnedZombie = Instantiate(bigZombie, new Vector3(ZombiePickerMaster.mouse_x,ZombiePickerMaster.mouse_y,0), Quaternion.identity );
+					spawnedZombie.GetComponent(GameObjectBehaviour).lane = lane;
+					current_lane_spawning=-1;
+					ResourceMaster.hooman-=5;
+				}
 			}
-		} 
-		else if(ZombiePickerMaster.zombieIndex==1){
-			// If enough resources
-			if (ResourceMaster.hooman>=3){
-				//translate lane as Y coordinate
-				placeSpawnY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
-				
-				//spawn at left and add velocity of 1
-				spawnedZombie = Instantiate(bigZombie, new Vector3(ZombiePickerMaster.mouse_x,ZombiePickerMaster.mouse_y,0), Quaternion.identity );
-				spawnedZombie.GetComponent(GameObjectBehaviour).lane = lane;
-				current_lane_spawning=-1;
-				ResourceMaster.hooman-=3;
+			else if(ZombiePickerMaster.zombieIndex==2){
+				// If enough resources
+				if (ResourceMaster.hooman>=3 && ResourceMaster.gasoline>=2){
+					//translate lane as Y coordinate
+					placeSpawnY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
+					
+					//spawn at left and add velocity of 1
+									Debug.Log("SPAWN X: "+ZombiePickerMaster.mouse_x+" Y: "+ZombiePickerMaster.mouse_y);
+
+					spawnedZombie = Instantiate(bomberZombie, new Vector3(ZombiePickerMaster.mouse_x,ZombiePickerMaster.mouse_y,0), Quaternion.identity );
+					spawnedZombie.GetComponent(GameObjectBehaviour).lane = lane;
+					current_lane_spawning=-1;
+					ResourceMaster.hooman-=3;
+					ResourceMaster.gasoline-=2;
+				}
 			}
-		}
-		
-		ZombiePickerMaster.zombieIndex=-1;
-		Destroy(zombieSpawner.gameObject);
+			
+			ZombiePickerMaster.zombieIndex=-1;
+			Destroy(zombieSpawner.gameObject);
 		}
 	}
 

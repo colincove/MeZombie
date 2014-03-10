@@ -28,6 +28,7 @@ function	OnMouseDown () {
 	
 	zombieDrag_destroyable= Instantiate(zombieDrag, new Vector3(x,y,0), Quaternion.identity );
 	zombieDrag_destroyable.name="ZombieRespawn";
+	zombieDrag_destroyable.transform.position.x=0;
 }
 
 
@@ -39,10 +40,12 @@ function OnMouseDrag () {
 	}else{
 		cannot_spawn_clone.transform.position.x=10000;
 	}
+	
 	ZombiePickerMaster.mouse_x=Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
 	ZombiePickerMaster.mouse_y=Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
 	zombieDrag_destroyable.transform.position.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
 	zombieDrag_destroyable.transform.position.y = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
+	Debug.Log(ZombiePickerMaster.mouse_y+":"+zombieDrag_destroyable.transform.position.y);
 }
 
 function OnMouseUp () {

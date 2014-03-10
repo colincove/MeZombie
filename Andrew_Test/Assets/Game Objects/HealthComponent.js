@@ -30,3 +30,7 @@ function DoDamage(damage:int){
 		SendMessage("OnKilled", gameObject, SendMessageOptions.DontRequireReceiver);
 	}
 }
+
+function MaxDamage(){
+	DoDamage(9999);
+}

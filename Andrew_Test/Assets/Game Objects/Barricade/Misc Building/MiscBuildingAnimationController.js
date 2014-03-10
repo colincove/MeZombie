@@ -10,10 +10,8 @@ function Update () {
 	var hp_total:int= GetComponent(HealthComponent).hp_total;
 	if (hp>=hp_total){
 		anim.SetInteger("State",0);
-	} else if (hp<hp_total && hp>=hp_total/2){
+	} else if (hp<hp_total && hp>0){
 		anim.SetInteger("State",1);
-	} else if (hp<hp_total/2 && hp>0){
-		anim.SetInteger("State",2);
 	} else {
 		anim.SetInteger("State",3);
 	}

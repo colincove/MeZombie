@@ -6,7 +6,7 @@ private var vx:float=0;
 private var vy:float=0;
 private var dead:boolean;
 
-public var speed:float=3;
+public var speed:float;
 public var targeting:AbstractTargeting;
 public var zombieWalk:boolean=true; //walk forward when there is no target to attack
 
@@ -14,6 +14,8 @@ function Start () {
 }
 
 function Update () {
+
+
 	if(!dead){
 		//there is no target. Move to the right. 
 		vy=0;
@@ -35,6 +37,7 @@ function Update () {
 			}
 		}
 		
+		
 		//if there is no delay on motion, continue moving
 		if(Time.time*1000>delayMotion){
 			rigidbody2D.velocity.x = vx;
@@ -44,7 +47,13 @@ function Update () {
 			rigidbody2D.velocity.x = 0;
 			rigidbody2D.velocity.y = 0;
 		}
+	} else {
+		//stop moving when dead (corpse wont move)
+		rigidbody2D.velocity.x = 0;
+		rigidbody2D.velocity.y = 0;
 	}
+			//Debug.Log(name+" "+(rigidbody2D.velocity.x));
+
 	
 }
 //message
