@@ -10,6 +10,9 @@ private var cam_enabled:boolean=true;
  
  	private var prevScreenWidth : float;
  	
+ 	public var mapBounds:GameObject;
+ 	public var mapBoundsReadable:MapSize;
+ 	
     function Start() {
 
 
@@ -18,17 +21,17 @@ private var cam_enabled:boolean=true;
     function Update() {
     	if(cam_enabled){
 
-    	mapX = GameMaster.mapX;
-		mapY = GameMaster.mapY;
+    	mapX = mapBounds.transform.position.x;
+		mapY = mapBounds.transform.position.y;
 		
         var vertExtent = Camera.main.camera.orthographicSize;  
         var horzExtent = vertExtent * Screen.width / Screen.height;
  
         // Calculations assume map is position at the origin
-        minX = horzExtent - mapX / 2.0;
-        maxX = mapX / 2.0 - horzExtent;
-        minY = vertExtent - mapY / 2.0;
-        maxY = mapY / 2.0 - vertExtent;
+        minX = mapX+(horzExtent - mapBoundsReadable.width / 2.0);
+        maxX = mapX+(mapBoundsReadable.width / 2.0 - horzExtent);
+        minY = (vertExtent - mapBoundsReadable.height  / 2.0)-mapY;
+        maxY = (mapBoundsReadable.height / 2.0 - vertExtent)+mapY;
         
        
 		if (maxX>minX){
