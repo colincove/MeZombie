@@ -6,7 +6,12 @@ static var metal:int;
 static var gasoline:int;
 static var rock:int;
 
+var  uiCamera:Camera;
 
+var hooman_ui:GameObject;
+var metal_ui:GameObject;
+var gasoline_ui:GameObject;
+var rock_ui:GameObject;
 
 function Start () {
 	
@@ -30,9 +35,27 @@ public static function AddResource(resourceId:int, count:int){
 }
 
 function Update () {
-	var resources_string = "h: "+padding(hooman)+" m: "+padding(metal)+" g: "+padding(gasoline)+ " r: "+padding(rock);
-
-	GameObject.Find("resourceStats").guiText.text=resources_string;
+	//var resources_string = "h: "+padding(hooman)+" m: "+padding(metal)+" g: "+padding(gasoline)+ " r: "+padding(rock);
+	
+	var f = new Vector2(uiCamera.ScreenToWorldPoint(new Vector3(0f, 0f, 0f)).x,0f);
+	transform.position.x = f.x;
+	
+	//hooman count
+	for (var child : Transform in hooman_ui.transform) {
+	    child.GetComponent(TextMesh).text = padding(hooman);
+	}
+	//metal count
+	for (var child : Transform in metal_ui.transform) {
+	    child.GetComponent(TextMesh).text = padding(metal);
+	}
+	//gasoline count
+	for (var child : Transform in gasoline_ui.transform) {
+	    child.GetComponent(TextMesh).text = padding(gasoline);
+	}
+	//rock count
+	for (var child : Transform in rock_ui.transform) {
+	    child.GetComponent(TextMesh).text = padding(rock);
+	}
 }
 
 function padding(stat:int){

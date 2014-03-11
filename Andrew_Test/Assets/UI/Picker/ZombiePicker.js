@@ -1,9 +1,6 @@
 ﻿#pragma strict
 
 
-var zombieDefault : Sprite;
-var zombiePicked : Sprite;
-
 var zombieIndex:int;
 static var can_spawn:boolean =false;
 var zombieDrag : GameObject;
@@ -63,11 +60,11 @@ function OnMouseUp () {
 }
 	
 function setPicked(){
-	GameObject.Find("ZombiePicker").GetComponent(ZombiePickerMaster).setAllDefault();
-	GetComponent(SpriteRenderer).sprite = zombiePicked;
+//	GameObject.Find("ZombiePicker").GetComponent(ZombiePickerMaster).setAllDefault();
+//	GetComponent(SpriteRenderer).sprite = zombiePicked;
 	
 }
 	
 function setDefault(){
-	GetComponent(SpriteRenderer).sprite = zombieDefault;	
+	//GetComponent(SpriteRenderer).sprite = zombieDefault;	
 }
