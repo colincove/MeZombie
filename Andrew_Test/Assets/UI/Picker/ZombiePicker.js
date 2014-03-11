@@ -42,7 +42,6 @@ function OnMouseDrag () {
 	ZombiePickerMaster.mouse_y=Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
 	zombieDrag_destroyable.transform.position.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
 	zombieDrag_destroyable.transform.position.y = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
-	Debug.Log(ZombiePickerMaster.mouse_y+":"+zombieDrag_destroyable.transform.position.y);
 }
 
 function OnMouseUp () {
