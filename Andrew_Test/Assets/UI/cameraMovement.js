@@ -74,15 +74,15 @@ private var cam_enabled:boolean=true;
        //	Debug.Log(maxY+":"+(mapY / 2.0 - Camera.main.orthographicSize+0.1));
        	if (Input.GetAxis("Mouse ScrollWheel") < 0 ) // back
         {
-         	if (mapY / 2.0 - Camera.main.orthographicSize-.1 > 0){
+         	//if (mapY / 2.0 - Camera.main.orthographicSize-.1 > 0){
         
-            Camera.main.orthographicSize = Mathf.Min(Camera.main.orthographicSize+.1, 6);
-            }
+            //Camera.main.orthographicSize = Mathf.Min(Camera.main.orthographicSize+.1, 6);
+            //}
  
         }
         if (Input.GetAxis("Mouse ScrollWheel") > 0) // forward
         {
-            Camera.main.orthographicSize = Mathf.Max(Camera.main.orthographicSize-.1, 2);
+           // Camera.main.orthographicSize = Mathf.Max(Camera.main.orthographicSize-.1, 2);
         }
         
     	}
