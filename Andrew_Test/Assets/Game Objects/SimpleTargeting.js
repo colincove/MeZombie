@@ -1,8 +1,8 @@
 ﻿#pragma strict
 public var targetLists : Targeting;
 public class SimpleTargeting extends AbstractTargeting{
-	private var currentAttackTarget:GameObject;
-	private var currentAgroTarget:GameObject;
+	public var currentAttackTarget:GameObject;
+	public var currentAgroTarget:GameObject;
 	public function getAgroTarget(){
 		return currentAgroTarget;
 	}
