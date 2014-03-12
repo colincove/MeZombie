@@ -66,7 +66,7 @@ function padding(stat:int){
 	else if (stat>=10 && stat<100)
 		return "0"+stat;
 	else if (stat < 1000)
-		return stat;
+		return ""+stat;
 	else
 		return "999";
 }
