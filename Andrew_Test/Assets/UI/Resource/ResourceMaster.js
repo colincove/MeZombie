@@ -37,8 +37,9 @@ public static function AddResource(resourceId:int, count:int){
 function Update () {
 	//var resources_string = "h: "+padding(hooman)+" m: "+padding(metal)+" g: "+padding(gasoline)+ " r: "+padding(rock);
 	
-	var f = new Vector2(uiCamera.ScreenToWorldPoint(new Vector3(0f, 0f, 0f)).x,0f);
-	transform.position.x = f.x;
+	//stick to left of camera
+	var camPosition = new Vector2(uiCamera.ScreenToWorldPoint(new Vector3(0f, 0f, 0f)).x,0f);
+	transform.position.x = camPosition.x;
 	
 	//hooman count
 	for (var child : Transform in hooman_ui.transform) {
