@@ -39,7 +39,7 @@ function Update () {
 	//4 lanes
 	//spawnZombieTimer();
 	      if (Input.GetKey ("escape")) {
-			Application.Quit();
+			TogglePause.setPause(true);
 		}
 }
 

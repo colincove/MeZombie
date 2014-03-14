@@ -10,24 +10,15 @@ function Start () {
 }
 
 function Update () {
-	/*if(Input.GetMouseButtonDown(0))
-		Debug.Log("Pressed left click.");
-	if(Input.GetMouseButtonDown(1))
-		Debug.Log("Pressed right click.");
-	if(Input.GetMouseButtonDown(2))
-		Debug.Log("Pressed middle click.");*/
-		
 
 	
 }
 
 function	OnMouseDown () {
-	Debug.Log(this.name + ": mouse down");
 	GetComponent(SpriteRenderer).sprite = spriteImageDown;
 }
 
 function	OnMouseUp () {
-	Debug.Log(this.name + ": mouse up");
 	GetComponent(SpriteRenderer).sprite = spriteImageUp;
 	renderer.enabled = true;
 	if (this.name=="btn_play")
@@ -42,6 +33,13 @@ function	OnMouseUp () {
 		MenuBehaviour.menu_1.SetActive(true);
 		MenuBehaviour.menu_2.SetActive(false);
 
+	}
+	
+	if (this.name=="btn_returnToGame"){
+		TogglePause.setPause(false);
+	}
+	if (this.name=="btn_exitToWindow"){
+		Application.Quit();
 	}
 		
 }

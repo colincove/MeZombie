@@ -12,6 +12,13 @@ function Update () {
 
 function OnMouseDown(){
 	isPause=!isPause;
+	
+	setPause(isPause);
+	
+}
+
+static function setPause(p:boolean){
+	isPause=p;
 	if (isPause){
 		Time.timeScale = 0.0;
 		GameObject.Find("Main Camera").GetComponent(cameraMovement).DisableCamera();
@@ -21,5 +28,4 @@ function OnMouseDown(){
 		GameObject.Find("Main Camera").GetComponent(cameraMovement).EnableCamera();
 		
 	}
-	
 }
