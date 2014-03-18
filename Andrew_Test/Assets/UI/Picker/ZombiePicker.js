@@ -26,6 +26,17 @@ function	OnMouseDown () {
 	zombieDrag_destroyable= Instantiate(zombieDrag, new Vector3(x,y,0), Quaternion.identity );
 	zombieDrag_destroyable.name="ZombieRespawn";
 	zombieDrag_destroyable.transform.position.x=0;
+	
+	//turn off health bar and attack radius
+	var allChildren = zombieDrag_destroyable.gameObject.GetComponentsInChildren(Transform);
+    for (var child : Transform in allChildren) 
+    {
+    	if (child.name=="Health Bar")
+    		child.renderer.enabled=false;
+    	if (child.name=="AttackRadius")
+    		child.collider2D.enabled=false;
+    }
+
 }
 
 
@@ -48,7 +59,7 @@ function OnMouseUp () {
 	cannot_spawn_clone.transform.position.x=10000;
 	ZombiePickerMaster.mouse_x=zombieDrag_destroyable.transform.position.x;
 	ZombiePickerMaster.mouse_y=zombieDrag_destroyable.transform.position.y;
-	Debug.Log("PICK X: "+ZombiePickerMaster.mouse_x+" Y: "+ZombiePickerMaster.mouse_y);
+	Debug.Log("PICK X: "+ZombiePickerMaster.mouse_x+" Y: "+ZombiePickerMaster.mouse_y+" ::"+zombieIndex);
 	ZombiePickerMaster.zombieIndex=zombieIndex;
 	yield WaitForSeconds(0.02);
 	if (zombieDrag_destroyable!=null){

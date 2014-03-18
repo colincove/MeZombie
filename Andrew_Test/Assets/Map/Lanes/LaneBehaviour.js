@@ -45,10 +45,13 @@ function OnTriggerEnter2D (zombieSpawner : Collider2D) {
 			
 		}
 	}
+
 	if(cm.CanSpawn(ZombiePickerMaster.mouse_x, ZombiePickerMaster.mouse_y, lane)){
 	
 		if (zombieSpawner.gameObject.name=="ZombieRespawn" && ZombiePickerMaster.zombieIndex>=0){
 			//Standard Zombie
+			//Debug.Log("SPAWN X: "+ZombiePickerMaster.mouse_x+" Y: "+ZombiePickerMaster.mouse_y);
+
 			if (ZombiePickerMaster.zombieIndex==0 ){
 				// If enough resources
 				if (ResourceMaster.hooman>=1){
@@ -83,7 +86,6 @@ function OnTriggerEnter2D (zombieSpawner : Collider2D) {
 					placeSpawnY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
 					
 					//spawn at left and add velocity of 1
-									Debug.Log("SPAWN X: "+ZombiePickerMaster.mouse_x+" Y: "+ZombiePickerMaster.mouse_y);
 
 					spawnedZombie = Instantiate(bomberZombie, new Vector3(ZombiePickerMaster.mouse_x,ZombiePickerMaster.mouse_y,0), Quaternion.identity );
 					spawnedZombie.GetComponent(GameObjectBehaviour).lane = lane;
