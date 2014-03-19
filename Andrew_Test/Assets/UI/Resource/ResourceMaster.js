@@ -13,8 +13,51 @@ var metal_ui:GameObject;
 var gasoline_ui:GameObject;
 var rock_ui:GameObject;
 
+static var zombieCost_arr:int[,] = new int[7,4];
+//hooman, metal, gas, rock
+
 function Start () {
+	//Standard Zombie cost
+	zombieCost_arr[0,0]=1;
+	zombieCost_arr[0,1]=0;
+	zombieCost_arr[0,2]=0;
+	zombieCost_arr[0,3]=0;
 	
+	//Big Zombie cost
+	zombieCost_arr[1,0]=5;
+	zombieCost_arr[1,1]=0;
+	zombieCost_arr[1,2]=0;
+	zombieCost_arr[1,3]=0;
+	
+	//Bomber Zombie cost
+	zombieCost_arr[2,0]=3;
+	zombieCost_arr[2,1]=0;
+	zombieCost_arr[2,2]=2;
+	zombieCost_arr[2,3]=0;
+	
+	//Flyer Zombie cost
+	zombieCost_arr[3,0]=5;
+	zombieCost_arr[3,1]=3;
+	zombieCost_arr[3,2]=2;
+	zombieCost_arr[3,3]=0;
+	
+	//Ranged Zombie cost
+	zombieCost_arr[4,0]=3;
+	zombieCost_arr[4,1]=0;
+	zombieCost_arr[4,2]=0;
+	zombieCost_arr[4,3]=1;
+	
+	//Scout Zombie cost
+	zombieCost_arr[5,0]=1;
+	zombieCost_arr[5,1]=0;
+	zombieCost_arr[5,2]=0;
+	zombieCost_arr[5,3]=0;
+	
+	//Titan Zombie cost
+	zombieCost_arr[6,0]=20;
+	zombieCost_arr[6,1]=10;
+	zombieCost_arr[6,2]=0;
+	zombieCost_arr[6,3]=0;
 }
 
 public static function AddResource(resourceId:int, count:int){

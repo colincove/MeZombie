@@ -1,10 +1,11 @@
 ﻿#pragma strict
 
-var zombies_arr:GameObject[];
 static var zombieIndex:int=-1;
 static var mouse_x:float=0;
 static var mouse_y:float=0;
 var  uiCamera:Camera;
+
+var zombie_arr: GameObject[];
 
 
 function Start () {
@@ -19,8 +20,3 @@ function Update () {
 	//transform.position.z=1.64;
 }
 
-function setAllDefault(){
-	for (zombie in zombies_arr){
-		zombie.GetComponent(ZombiePicker).setDefault();
-	}
-}
