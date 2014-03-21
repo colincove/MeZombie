@@ -35,7 +35,12 @@ function	OnMouseDown () {
     		child.renderer.enabled=false;
     	if (child.name=="AttackRadius")
     		child.collider2D.enabled=false;
+
     }
+    yield WaitForSeconds(0.02);
+    var jumpComponent = zombieDrag_destroyable.GetComponent(JumpOver);
+    if (jumpComponent!=null)
+    		jumpComponent.allowJump=false;
 
 }
 
