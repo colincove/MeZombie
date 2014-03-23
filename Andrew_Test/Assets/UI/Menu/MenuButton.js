@@ -41,6 +41,11 @@ function	OnMouseUp () {
 	if (this.name=="btn_exitToWindow"){
 		Application.Quit();
 	}
+	if (this.name=="btn_replay"){
+		TogglePause.setPause(false);
+		WinCondition.isWin=false;
+		Application.LoadLevel(Application.loadedLevel);
+	}
 		
 }
 
