@@ -38,7 +38,6 @@ function Update () {
 				vy=-Mathf.Sin(a)*speed;
 				vx=-Mathf.Cos(a)*speed;
 				
-				if (name=="Melee Hooman") Debug.Log("vx: "+vx);
 			}
 		}
 		

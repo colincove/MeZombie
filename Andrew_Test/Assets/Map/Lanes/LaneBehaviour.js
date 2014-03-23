@@ -56,14 +56,14 @@ function MagicTrigger (zombieSpawner : Collider2D) {
 			
 		}
 	}
-	if (zombieSpawner.gameObject.tag=="Zombie" && name=="Lane1")Debug.Log(zombieSpawner.gameObject.name);
+	//if (zombieSpawner.gameObject.tag=="Zombie" && name=="Lane1")Debug.Log(zombieSpawner.gameObject.name);
 
 
 	if(cm.CanSpawn(ZombiePickerMaster.mouse_x, ZombiePickerMaster.mouse_y, lane)){
 	
 					
 		if (zombieSpawner.gameObject.name=="ZombieRespawn" && ZombiePickerMaster.zombieIndex>=0){
-
+			Debug.Log(zombieSpawner.gameObject.name);
 			// If enough resources
 			if (ResourceMaster.hooman>=ResourceMaster.zombieCost_arr[ZombiePickerMaster.zombieIndex,0]
 			&& ResourceMaster.metal>=ResourceMaster.zombieCost_arr[ZombiePickerMaster.zombieIndex,1]
