@@ -13,7 +13,7 @@ function Start () {
 
 function Update () {
 	for(var creepObj:GameObject in creepObjs){
-		if(creepObj.transform.position.x > lastCreepPart.transform.position.x+offset){
+		if(creepObj.gameObject!=null && creepObj.transform.position.x > lastCreepPart.transform.position.x+offset){
 			Extend();
 		}
 	}

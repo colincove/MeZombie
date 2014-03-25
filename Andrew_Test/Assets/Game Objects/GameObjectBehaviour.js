@@ -27,7 +27,7 @@ function DestroyMe(){
 	if(!dead){
 		//need to give time for attackers to remove the game object from thier attack lists. 
 		//because destroying objects does not call OnTriggerExit2D. Therefore it would stay in the list. 
-		yield WaitForSeconds(0.25);
+		yield WaitForSeconds(0.02);
 	}
 	
 	Destroy(gameObject);

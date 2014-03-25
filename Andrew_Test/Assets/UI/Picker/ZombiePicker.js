@@ -37,10 +37,17 @@ function	OnMouseDown () {
     		child.collider2D.enabled=false;
 
     }
+    
+        		
+    var rocketComponent = zombieDrag_destroyable.GetComponent(KamikazeUponSpawn);
+    if (rocketComponent!=null)
+    		rocketComponent.allowAttack=false;
+    		
     yield WaitForSeconds(0.02);
     var jumpComponent = zombieDrag_destroyable.GetComponent(JumpOver);
     if (jumpComponent!=null)
     		jumpComponent.allowJump=false;
+
 
 }
 
