@@ -23,7 +23,7 @@ function Start () {
 	}catch(e){
 		//no attack object found
 	}
-	
+
 	if(agro!=null){
 		agroTarget=agro.GetComponent("Target");
 		agroList = agroTarget.targeting_list;

@@ -10,7 +10,12 @@ function Start () {
 }
 
 function Update () {
-	
+
+	if (GetComponent(GameObjectBehaviour)!=null){
+		lane=GetComponent(GameObjectBehaviour).lane;
+	} else {
+		lane=transform.parent.gameObject.GetComponent(GameObjectBehaviour).lane;
+	}
 }
 //messgae
 function OnTargetDestroyed(target:GameObject){
@@ -38,15 +43,23 @@ function ReTarget(newTarget:GameObject){
 }
 //message
 function Target(target:GameObject){
-	newestTarget=target;
-	targeting=target;
-	targeting_list.Add(target);
-	SendMessage("AddOpponent", gameObject, SendMessageOptions.DontRequireReceiver);
+	
+	if(target.GetComponent(GameObjectBehaviour).lane == lane && (target.tag=="Hooman" || target.tag=="Barricade" || target.tag=="Zombie")){
+		newestTarget=target;
+		targeting=target;
+
+		if (target.tag=="Hooman"){
+			targeting_list.Insert(0, target);
+		} else {
+			targeting_list.Add(target);
+		}
+		SendMessage("AddOpponent", gameObject, SendMessageOptions.DontRequireReceiver);
+	}
 }
 function TriggerTarget(target:GameObject){
 	var index:int=targeting_list.IndexOf(target);
 	if(index==-1){
-	SendMessage("Target", target, SendMessageOptions.DontRequireReceiver);
+		SendMessage("Target", target, SendMessageOptions.DontRequireReceiver);
 	}
 	
 }
