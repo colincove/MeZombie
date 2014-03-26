@@ -28,19 +28,17 @@ function Update () {
 		if (targeting!=null)
 			agroTarget=targeting.getAgroTarget();
 		if(agroTarget!=null ){
-
-			if(agroTarget.tag=="Hooman" || agroTarget.tag=="Zombie"){
-
+			if(agroTarget.tag!="Barricade" && agroTarget.tag!="Dead"){
 			
+				
 				//there is a target. Move toward it using pythagoras
 				var dy:float = transform.position.y - agroTarget.transform.position.y;
 				var dx:float = transform.position.x - agroTarget.transform.position.x;
 				var a:float = Mathf.Atan2(dy, dx);
 				vy=-Mathf.Sin(a)*speed;
 				vx=-Mathf.Cos(a)*speed;
-					
-			} 
-			
+				
+			}
 		}
 		
 		
