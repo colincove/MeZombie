@@ -13,11 +13,11 @@ function OnTriggerEnter2D(coll : Collider2D) {
 
 	if(coll.gameObject.name=="JumpOver" && allowJump){
 		SendMessage("Jump");
-		collider2D.enabled=false;
+		collider2D.isTrigger=true;
 	}
 }
 
 function NotJumping(){
 	
-		collider2D.enabled=true;
+		collider2D.isTrigger=false;
 }
