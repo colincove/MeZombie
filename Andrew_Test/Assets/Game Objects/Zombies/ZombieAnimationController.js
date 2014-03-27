@@ -15,7 +15,6 @@ function Update () {
 }
 function Attack(){
 	anim.SetInteger("State",1);
-	Debug.Log("attack");
 }
 
 function OnKilled(){
