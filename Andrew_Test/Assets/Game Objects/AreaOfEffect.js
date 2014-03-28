@@ -4,6 +4,7 @@
 public var damage:int;
 public var radius:float;
 public var activateOnDeath:boolean;
+public var activateOnAttack:boolean;
 function Start () {
 
 }
@@ -13,7 +14,9 @@ function Update () {
 }
 
 function Attack(target:GameObject){
-	AreaOfEffect();
+	if (activateOnAttack){
+		AreaOfEffect();
+	}
 }
 
 function OnKilled(){
