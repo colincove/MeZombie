@@ -33,7 +33,7 @@ function Update () {
 				
 				
 				if (level==1 && ResourceMaster.metal>=4){
-					transform.parent.gameObject.GetComponent(HealthComponent).hp+=200;
+					parent.GetComponent(HealthComponent).hp+=200;
 					ResourceMaster.AddResource(1, -4);
 
 					parent.transform.localScale+=new Vector3(0.05,0.05,0.05);
@@ -41,19 +41,130 @@ function Update () {
 				} 
 				if (level==2 &&  ResourceMaster.metal>=4){
 					
-					transform.parent.gameObject.GetComponent(HealthComponent).hp+=200;
+					parent.GetComponent(HealthComponent).hp+=200;
 					ResourceMaster.AddResource(1, -4);
 					
 					var limbs = parent.GetComponentInChildren(Transform);
 
 					for (var limb : Transform in limbs) {
 						if (limb.tag =="ZombieLimb"){
-							
-							limb.GetComponent(SpriteRenderer).color = new Color(1,0.2,0.2);
+							limb.GetComponent(SpriteRenderer).color = new Color(1,0.6,0.6);
 						}
 					}
 				}
 				
+			}
+			if (speedUpgrade){
+				parent = transform.parent.gameObject;
+				if (level==1 && ResourceMaster.metal>=2){
+					parent.GetComponent(ZombieAnimationController).setWalkAnimSpeed(2);
+					parent.GetComponent(MeleeLocomotion).speed += .5;
+					ResourceMaster.AddResource(1, -2);
+				}
+				if (level==2 && ResourceMaster.metal>=2){
+					parent.GetComponent(ZombieAnimationController).setWalkAnimSpeed(3);
+					parent.GetComponent(MeleeLocomotion).speed += .5;
+					ResourceMaster.AddResource(1, -2);
+					
+					limbs = parent.GetComponentInChildren(Transform);
+
+					for (var limb : Transform in limbs) {
+						if (limb.tag =="ZombieLimb"){
+							
+							limb.GetComponent(SpriteRenderer).color = new Color(1,0.6,0.6);
+						}
+					}
+				}
+			}
+			if (attackPowerUpgrade){
+				parent = transform.parent.gameObject;
+				if (level==1 && ResourceMaster.metal>=10 && ResourceMaster.rock>=5){
+					parent.GetComponent(StandardDamageDealer).damage += 75;
+					try {
+						parent.GetComponent(AreaOfEffect).damage += 75;
+					} catch(e){
+						//no area of effect
+					}
+					
+					ResourceMaster.AddResource(1, -10);
+					ResourceMaster.AddResource(3, -5);
+					
+					limbs = parent.GetComponentInChildren(Transform);
+					
+					for (var limb : Transform in limbs) {
+						if (limb.tag =="ZombieLimb2"){
+							
+							limb.GetComponent(SpriteRenderer).color = new Color(.3,0,0);
+
+						}
+					}
+				}
+				if (level==2 && ResourceMaster.metal>=10 && ResourceMaster.metal>=5){
+					parent.GetComponent(StandardDamageDealer).damage += 75;
+					try {
+						parent.GetComponent(AreaOfEffect).damage += 75;
+					} catch(e){
+						//no area of effect
+					}
+					
+					ResourceMaster.AddResource(1, -10);
+					ResourceMaster.AddResource(3, -5);
+					
+					limbs = parent.GetComponentInChildren(Transform);
+
+					for (var limb : Transform in limbs) {
+						if (limb.tag =="ZombieLimb"  ){
+							
+							limb.GetComponent(SpriteRenderer).color = new Color(1,0.6,0.6);
+						}
+						if (limb.tag  =="ZombieLimb2" ){
+							
+							limb.GetComponent(SpriteRenderer).color = new Color(.3,0,0);
+						}
+					}
+				}
+			}
+			
+			if (attackRateUpgrade){
+				parent = transform.parent.gameObject;
+				if (level==1 && ResourceMaster.rock>=2){
+					parent.GetComponent(ZombieAnimationController).setAttackAnimSpeed(1.18);
+					parent.GetComponent(IntervalAttacker).attackSpeed -= 200;
+					parent.GetComponent(IntervalAttacker).locomotionDelay -= 200;
+					ResourceMaster.AddResource(3, -2);
+					
+					limbs = parent.GetComponentInChildren(Transform);
+
+
+					for (var limb : Transform in limbs) {
+						if (limb.tag =="ZombieLimb2"){
+							
+							limb.GetComponent(SpriteRenderer).color = new Color(.6,0,0);
+							limb.localScale.y+=0.8;
+							limb.localScale.x+=0.8;
+						}
+					}
+				}
+				if (level==2 && ResourceMaster.rock>=2){
+					parent.GetComponent(ZombieAnimationController).setAttackAnimSpeed(1.44);
+					parent.GetComponent(IntervalAttacker).attackSpeed -=200;
+					parent.GetComponent(IntervalAttacker).locomotionDelay -= 200;
+					ResourceMaster.AddResource(3, -2);
+					
+					limbs = parent.GetComponentInChildren(Transform);
+
+					for (var limb : Transform in limbs) {
+						if (limb.tag =="ZombieLimb"){
+							
+							limb.GetComponent(SpriteRenderer).color = new Color(1,0.6,0.6);
+						}
+						
+						if (limb.tag  =="ZombieLimb2" ){
+							
+							limb.GetComponent(SpriteRenderer).color = new Color(.6,0,0);
+						}
+					}
+				}
 			}
 		}
 	}
