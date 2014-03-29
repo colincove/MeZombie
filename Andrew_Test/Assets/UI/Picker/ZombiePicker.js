@@ -30,6 +30,8 @@ function Update () {
 		GetComponent(SpriteRenderer).sprite = disableAvatar;
 		collider2D.enabled=false;
 	}
+	
+	//can_spawn=false;
 }
 
 function	OnMouseDown () {
@@ -52,11 +54,15 @@ function	OnMouseDown () {
 
     }
     
-        		
+    if (zombieDrag_destroyable.collider2D!=null)
+    	zombieDrag_destroyable.collider2D.isTrigger=true;
+    
+    //prevent rocket zombie from setting off
     var rocketComponent = zombieDrag_destroyable.GetComponent(KamikazeUponSpawn);
     if (rocketComponent!=null)
     		rocketComponent.allowAttack=false;
-    		
+
+   //prevent scout zombie from jumping   
     yield WaitForSeconds(0.02);
     var jumpComponent = zombieDrag_destroyable.GetComponent(JumpOver);
     if (jumpComponent!=null)
@@ -67,7 +73,7 @@ function	OnMouseDown () {
 
 
 function OnMouseDrag () {
-	if(can_spawn==false){
+	if(!can_spawn){
 		cannot_spawn_clone.transform.position.x=Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
 		cannot_spawn_clone.transform.position.y=Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
 		cannot_spawn_clone.transform.position.z=zombieDrag_destroyable.transform.position.z-1;

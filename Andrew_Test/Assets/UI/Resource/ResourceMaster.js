@@ -16,6 +16,12 @@ var rock_ui:GameObject;
 static var zombieCost_arr:int[,] = new int[7,4];
 //hooman, metal, gas, rock
 
+//resource count
+var hooman_startingResource:int;
+var metal_startingResource:int;
+var gasoline_startingResource:int;
+var rock_startingResource:int;
+
 function Start () {
 	//Standard Zombie cost
 	zombieCost_arr[0,0]=1;
@@ -58,6 +64,12 @@ function Start () {
 	zombieCost_arr[6,1]=10;
 	zombieCost_arr[6,2]=0;
 	zombieCost_arr[6,3]=0;
+	
+	ResourceMaster.hooman = hooman_startingResource;
+	ResourceMaster.metal = metal_startingResource;
+	ResourceMaster.gasoline = gasoline_startingResource;
+	ResourceMaster.rock = rock_startingResource;
+	
 }
 
 public static function AddResource(resourceId:int, count:int){

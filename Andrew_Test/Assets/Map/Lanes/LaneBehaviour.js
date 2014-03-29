@@ -24,12 +24,15 @@ function Update () {
 	}else{
 		transform.gameObject.renderer.enabled=false;
 	}
+	
+
 }
 function OnTriggerExit2D (zombieSpawner : Collider2D) {
 	
 	if(zombieSpawner.gameObject.name=="ZombieRespawn"){
 		transform.gameObject.renderer.enabled=false;
 	}
+
 	
 }
 
