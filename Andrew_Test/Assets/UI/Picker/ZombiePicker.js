@@ -8,6 +8,9 @@ private var zombieDrag_destroyable : GameObject;
 public var cannot_spawn_graphic:GameObject;
 private var cannot_spawn_clone:GameObject;
 
+public var activeAvatar:Sprite;
+public var disableAvatar:Sprite;
+
 function Start () {
 	
 	cannot_spawn_clone=Instantiate(cannot_spawn_graphic, new Vector3(0,0,0), Quaternion.identity );
@@ -15,7 +18,18 @@ function Start () {
 }
 
 function Update () {
-
+	if (ResourceMaster.hooman>=ResourceMaster.zombieCost_arr[zombieIndex,0]
+			&& ResourceMaster.metal>=ResourceMaster.zombieCost_arr[zombieIndex,1]
+			&& ResourceMaster.gasoline>=ResourceMaster.zombieCost_arr[zombieIndex,2]
+			&& ResourceMaster.rock>=ResourceMaster.zombieCost_arr[zombieIndex,3]
+			){
+		GetComponent(SpriteRenderer).sprite = activeAvatar;
+		collider2D.enabled=true;
+	} else {
+	
+		GetComponent(SpriteRenderer).sprite = disableAvatar;
+		collider2D.enabled=false;
+	}
 }
 
 function	OnMouseDown () {
