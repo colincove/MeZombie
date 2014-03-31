@@ -48,20 +48,20 @@ TextureImporter:
     - name: Hard Base_0
       rect:
         serializedVersion: 2
-        x: 174
-        y: 394
-        width: 643
-        height: 308
+        x: 159
+        y: 380
+        width: 670
+        height: 332
       alignment: 9
-      pivot: {x: .5, y: .343163431}
+      pivot: {x: .497329712, y: .335640132}
     - name: Hard Base_1
       rect:
         serializedVersion: 2
-        x: 19
-        y: 28
+        x: 17
+        y: 14
         width: 803
-        height: 307
+        height: 158
       alignment: 9
-      pivot: {x: .597943366, y: .343163401}
+      pivot: {x: .586892664, y: .720806479}
   spritePackingTag: 
   userData: 
