@@ -6,7 +6,7 @@ function Start () {
 
 function Update () {
 
-    	renderer.enabled = WinCondition.isWin;
-   		collider2D.enabled = WinCondition.isWin;
+    	renderer.enabled = GameMaster.isWin;
+   		collider2D.enabled = GameMaster.isWin;
     
 }

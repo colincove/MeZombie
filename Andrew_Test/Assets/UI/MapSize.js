@@ -7,3 +7,6 @@
 
 public var width:float;
 public var height:float;
+public var x:float;
+
+public var y:float;

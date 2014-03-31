@@ -20,17 +20,17 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -44,6 +44,33 @@ TextureImporter:
     textureFormat: -2
     compressionQuality: 50
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Medium Base_0
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 653
+        width: 522
+        height: 202
+      alignment: 9
+      pivot: {x: .5, y: .368583769}
+    - name: Medium Base_1
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 365
+        width: 546
+        height: 204
+      alignment: 9
+      pivot: {x: .544391394, y: .426449656}
+    - name: Medium Base_2
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 116
+        width: 549
+        height: 114
+      alignment: 9
+      pivot: {x: .516818583, y: .844228804}
   spritePackingTag: 
   userData: 
