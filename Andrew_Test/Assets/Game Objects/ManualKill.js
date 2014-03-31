@@ -1,7 +1,7 @@
 ﻿#pragma strict
 
 var returnResources:int[];
-
+private var oneTime:boolean=false;
 function Start () {
 
 }
@@ -9,7 +9,7 @@ function Start () {
 function Update () {
 
 	//right click
-	if(Input.GetMouseButtonDown(1)){
+	if(Input.GetMouseButtonDown(1) && !oneTime){
 		var myCollider:BoxCollider2D = GetComponent(BoxCollider2D);
 		var myCenter = myCollider.center + transform.parent.gameObject.transform.position;
 		var myLeft = myCenter.x-myCollider.size.x/2;
@@ -30,6 +30,8 @@ function Update () {
 				ResourceMaster.AddResource(2, returnResources[2]);
 			if (returnResources.length>3)
 				ResourceMaster.AddResource(3, returnResources[3]);
+				
+			oneTime=true;
 		}
 		
 		

@@ -27,17 +27,27 @@ function Update () {
 		win();
 	}
 	
-	if (GameObject.FindGameObjectsWithTag("Zombie").length==0 &&
-		GameObject.FindGameObjectsWithTag("Resource").length==0 &&
+	if (GameObject.FindGameObjectsWithTag("Zombie").length==0  &&
 		ResourceMaster.hooman ==0 &&
 		  !isLose){
-		  TogglePause.setLose();
-		isLose=true;
+		  
+		  var noHoomanFound:boolean = true;
+		  var resources_arr = 		GameObject.FindGameObjectsWithTag("Resource");
+		  for (resource in resources_arr){
+		  	if (resource.name=="Hooman"){
+		  		noHoomanFound=false;
+			  
+		  	}
+		  }
+		  if (noHoomanFound){
+		 	 
+				lose();
+		  }
 	}
 		
 }
 
-function win(){
+private function win(){
 
 	Camera.mainCamera.transform.position = landmark.transform.position;
 
@@ -45,6 +55,14 @@ function win(){
 		isWin=true;
 		TogglePause.setWin();
 }
+
+private function lose(){
+
+	yield WaitForSeconds(1);
+	TogglePause.setLose();
+	isLose=true;
+}
+
 static function initialLevelConditions(){
 	isWin=false;
 	winCount=0;
