@@ -4,6 +4,8 @@ static var isWin:boolean = false;
 static var winCount:int=0;
 var totalWinningLandmarks:int;
 
+var landmark:GameObject;
+
 static var isLose:boolean = false;
 
 function Start () {
@@ -22,8 +24,7 @@ function Update () {
 		
 	}
 	if (winCount>= totalWinningLandmarks && !isWin){
-		isWin=true;
-		TogglePause.setWin();
+		win();
 	}
 	
 	if (GameObject.FindGameObjectsWithTag("Zombie").length==0 &&
@@ -36,6 +37,14 @@ function Update () {
 		
 }
 
+function win(){
+
+	Camera.mainCamera.transform.position = landmark.transform.position;
+
+	yield WaitForSeconds(2);
+		isWin=true;
+		TogglePause.setWin();
+}
 static function initialLevelConditions(){
 	isWin=false;
 	winCount=0;
