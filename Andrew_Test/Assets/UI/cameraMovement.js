@@ -28,10 +28,10 @@ private var cam_enabled:boolean=true;
 	        var horzExtent = vertExtent * Screen.width / Screen.height;
 	 
 	        // Calculations assume map is position at the origin
-	        minX = mapX+(horzExtent - mapBoundsReadable.width / 2.0);
-	        maxX = mapX+(mapBoundsReadable.width / 2.0 - horzExtent);
-	        minY = (vertExtent - mapBoundsReadable.height  / 2.0)-mapY;
-	        maxY = (mapBoundsReadable.height / 2.0 - vertExtent)+mapY;
+	        minX = mapX+(horzExtent - mapBoundsReadable.width / 2.0) + mapBoundsReadable.x;
+	        maxX = mapX+(mapBoundsReadable.width / 2.0 - horzExtent) +mapBoundsReadable.x;
+	        minY = (vertExtent - mapBoundsReadable.height  / 2.0)-mapY - mapBoundsReadable.y;
+	        maxY = (mapBoundsReadable.height / 2.0 - vertExtent)+mapY - mapBoundsReadable.y;
 	        
 	       
 			if (maxX>minX){

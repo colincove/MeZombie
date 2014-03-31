@@ -34,3 +34,7 @@ static function setWin(){
 		Time.timeScale = 0.0;
 		GameObject.Find("Main Camera").GetComponent(cameraMovement).DisableCamera();
 }
+
+static function setLose(){
+		setWin();
+}

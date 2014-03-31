@@ -43,7 +43,7 @@ function	OnMouseUp () {
 	}
 	if (this.name=="btn_replay"){
 		TogglePause.setPause(false);
-		GameMaster.resetWinCondition();
+		GameMaster.initialLevelConditions();
 		Application.LoadLevel(Application.loadedLevel);
 	}
 		
