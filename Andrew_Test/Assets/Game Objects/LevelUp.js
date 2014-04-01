@@ -8,6 +8,8 @@ var attackRateUpgrade:boolean;
 static var maxLevel = 2;
 private var level:int = 0;
 
+var levelUp:AudioSource;
+
 function Start () {
 
 }
@@ -27,19 +29,23 @@ function Update () {
 		var mouseCenter = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
 		if (myLeft< mouseCenter.x &&  mouseCenter.x < myRight && myBottom< mouseCenter.y &&  mouseCenter.y <myTop && level<maxLevel){
 
-			level++;
 			if (healthUpgrade){
 				var parent = transform.parent.gameObject;
 				
 				
-				if (level==1 && ResourceMaster.metal>=4){
+				if (level==0 && ResourceMaster.metal>=4){
+					level++;
+					levelUp.Play();
+					
 					parent.GetComponent(HealthComponent).hp+=200;
 					ResourceMaster.AddResource(1, -4);
 
 					parent.transform.localScale+=new Vector3(0.05,0.05,0.05);
-
+					
 				} 
-				if (level==2 &&  ResourceMaster.metal>=4){
+				else if (level==1 &&  ResourceMaster.metal>=4){
+					level++;
+					levelUp.Play();
 					
 					parent.GetComponent(HealthComponent).hp+=200;
 					ResourceMaster.AddResource(1, -4);
@@ -56,12 +62,16 @@ function Update () {
 			}
 			if (speedUpgrade){
 				parent = transform.parent.gameObject;
-				if (level==1 && ResourceMaster.metal>=2){
+				if (level==0 && ResourceMaster.metal>=2){
+					level++;
+					levelUp.Play();
 					parent.GetComponent(ZombieAnimationController).setWalkAnimSpeed(2);
 					parent.GetComponent(MeleeLocomotion).speed += .5;
 					ResourceMaster.AddResource(1, -2);
 				}
-				if (level==2 && ResourceMaster.metal>=2){
+				else if (level==1 && ResourceMaster.metal>=2){
+					level++;
+					levelUp.Play();
 					parent.GetComponent(ZombieAnimationController).setWalkAnimSpeed(3);
 					parent.GetComponent(MeleeLocomotion).speed += .5;
 					ResourceMaster.AddResource(1, -2);
@@ -78,7 +88,9 @@ function Update () {
 			}
 			if (attackPowerUpgrade){
 				parent = transform.parent.gameObject;
-				if (level==1 && ResourceMaster.metal>=10 && ResourceMaster.rock>=5){
+				if (level==0 && ResourceMaster.metal>=10 && ResourceMaster.rock>=5){
+					level++;
+					levelUp.Play();
 					parent.GetComponent(StandardDamageDealer).damage += 75;
 					try {
 						parent.GetComponent(AreaOfEffect).damage += 75;
@@ -99,7 +111,9 @@ function Update () {
 						}
 					}
 				}
-				if (level==2 && ResourceMaster.metal>=10 && ResourceMaster.metal>=5){
+				else if (level==1 && ResourceMaster.metal>=10 && ResourceMaster.metal>=5){
+					level++;
+					levelUp.Play();
 					parent.GetComponent(StandardDamageDealer).damage += 75;
 					try {
 						parent.GetComponent(AreaOfEffect).damage += 75;
@@ -127,7 +141,9 @@ function Update () {
 			
 			if (attackRateUpgrade){
 				parent = transform.parent.gameObject;
-				if (level==1 && ResourceMaster.rock>=2){
+				if (level==0 && ResourceMaster.rock>=2){
+					level++;
+					levelUp.Play();
 					parent.GetComponent(ZombieAnimationController).setAttackAnimSpeed(1.18);
 					parent.GetComponent(IntervalAttacker).attackSpeed -= 200;
 					parent.GetComponent(IntervalAttacker).locomotionDelay -= 200;
@@ -145,7 +161,9 @@ function Update () {
 						}
 					}
 				}
-				if (level==2 && ResourceMaster.rock>=2){
+				else if (level==1 && ResourceMaster.rock>=2){
+					level++;
+					levelUp.Play();
 					parent.GetComponent(ZombieAnimationController).setAttackAnimSpeed(1.44);
 					parent.GetComponent(IntervalAttacker).attackSpeed -=200;
 					parent.GetComponent(IntervalAttacker).locomotionDelay -= 200;
