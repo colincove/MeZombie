@@ -41,6 +41,12 @@ function	OnMouseUp () {
 	if (this.name=="btn_exitToWindow"){
 		Application.Quit();
 	}
+	
+	if (this.name=="btn_exitToMenu"){
+		TogglePause.setPause(false);
+		Application.LoadLevel("World Map");
+	}
+	
 	if (this.name=="btn_replay"){
 		TogglePause.setPause(false);
 		GameMaster.initialLevelConditions();
