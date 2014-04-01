@@ -13,6 +13,8 @@ var metal_ui:GameObject;
 var gasoline_ui:GameObject;
 var rock_ui:GameObject;
 
+var spawnedText:GameObject;
+
 static var zombieCost_arr:int[,] = new int[7,4];
 //hooman, metal, gas, rock
 
@@ -76,17 +78,52 @@ public static function AddResource(resourceId:int, count:int){
 	switch(resourceId){
 		case 0:
 			hooman+=count; 
+			//ui = hooman_ui;
 			break;
 		case 1:
 			metal+=count;
+			//ui = metal_ui;
 			break;
 		case 2:
 			gasoline+=count;
+			//ui = gasoline_ui;
 			break;
 		case 3:
 			rock+=count;
+			//ui = rock_ui;
 			break;
 	}
+	if (count!=0){
+	var rm = GameObject.Find("Resource");
+	//
+	rm.GetComponent(ResourceMaster).spawnResourceText(resourceId,count);
+	}
+}
+
+function spawnResourceText(resourceId:int,count:int){
+	var ui:GameObject;
+	switch(resourceId){
+		case 0:
+			ui = hooman_ui;
+			break;
+		case 1:
+			ui = metal_ui;
+			break;
+		case 2:
+			ui = gasoline_ui;
+			break;
+		case 3:
+			ui = rock_ui;
+			break;
+	}
+	var GO =Instantiate(spawnedText, ui.transform.position, Quaternion.identity );
+	
+	if (count>0){
+		 GO.GetComponent(TextMesh).text="+"+count;
+
+	} else {
+ 		GO.GetComponent(TextMesh).text=""+count;
+ 	}
 }
 
 function Update () {

@@ -82,10 +82,15 @@ function MagicTrigger (zombieSpawner : Collider2D) {
 				spawnedZombie.GetComponent(GameObjectBehaviour).lane = lane;
 				current_lane_spawning=-1;
 				
-				ResourceMaster.hooman-=ResourceMaster.zombieCost_arr[ZombiePickerMaster.zombieIndex,0];
-				ResourceMaster.metal-=ResourceMaster.zombieCost_arr[ZombiePickerMaster.zombieIndex,1];
-				ResourceMaster.gasoline-=ResourceMaster.zombieCost_arr[ZombiePickerMaster.zombieIndex,2];
-				ResourceMaster.rock-=ResourceMaster.zombieCost_arr[ZombiePickerMaster.zombieIndex,3];
+				//ResourceMaster.hooman-=ResourceMaster.zombieCost_arr[ZombiePickerMaster.zombieIndex,0];
+				//ResourceMaster.metal-=ResourceMaster.zombieCost_arr[ZombiePickerMaster.zombieIndex,1];
+				//ResourceMaster.gasoline-=ResourceMaster.zombieCost_arr[ZombiePickerMaster.zombieIndex,2];
+				//ResourceMaster.rock-=ResourceMaster.zombieCost_arr[ZombiePickerMaster.zombieIndex,3];
+				
+				ResourceMaster.AddResource(0,-ResourceMaster.zombieCost_arr[ZombiePickerMaster.zombieIndex,0]);
+				ResourceMaster.AddResource(1,-ResourceMaster.zombieCost_arr[ZombiePickerMaster.zombieIndex,1]);
+				ResourceMaster.AddResource(2,-ResourceMaster.zombieCost_arr[ZombiePickerMaster.zombieIndex,2]);
+				ResourceMaster.AddResource(3,-ResourceMaster.zombieCost_arr[ZombiePickerMaster.zombieIndex,3]);
 			}
 			
 			
