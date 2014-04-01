@@ -21,11 +21,28 @@ private function StopAllSounds(){
 	if (break3!=null) break3.Stop();
 }
 
+private function VolumeAllSounds(volume:int){
+	if (walk!=null) walk.volume=volume;
+	if (idle!=null) idle.volume=volume;
+	if (attack!=null) attack.volume=volume;
+	if (die!=null) die.volume=volume;
+	
+	if (break1!=null) break1.volume=volume;
+	if (break2!=null) break2.volume=volume;
+	if (break3!=null) break3.volume=volume;
+}
+
 function Start () {
 
 }
 
 function Update () {
+	if (TogglePause.isPause || GameMaster.isWin || GameMaster.isLose){
+ 
+			VolumeAllSounds(0);
+	} 	else {
+		VolumeAllSounds(1);
+	}
 
 }
 
