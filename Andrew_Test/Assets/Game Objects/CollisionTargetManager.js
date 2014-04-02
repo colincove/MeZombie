@@ -1,4 +1,6 @@
 ﻿#pragma strict
+import System.Collections.Generic;
+
 public var targetComp:Target;
 public var collisionList: List.<GameObject> = new List.<GameObject>();//I am being agro'd by
 private var collisionRemovalList: List.<GameObject> = new List.<GameObject>();//I am being agro'd by
