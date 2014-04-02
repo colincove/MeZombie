@@ -22,7 +22,7 @@ function Update () {
 
 function OnMouseDown(){
 	if  (levelsUnlocked_arr[WorldRotation.level-1]){
-		if (WorldRotation.level!=2 && WorldRotation.level!=3)
+		if ( WorldRotation.level!=3)
 		Application.LoadLevel("Level"+WorldRotation.level);
 	}
 }
