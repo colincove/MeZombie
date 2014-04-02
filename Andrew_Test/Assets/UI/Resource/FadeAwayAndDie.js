@@ -1,14 +1,16 @@
 ﻿#pragma strict
 
+var time:int;
 function Start () {
-
+	time = Time.time*1000;
 }
 
 private var i:float = 1;
-private var j:int = 30;
 function Update () {
-j--;
-	if (j<0){
+		
+			var diff:int=Time.time*1000-time;
+	
+	if (diff>100){
 		GetComponent(TextMesh).color.a = i;
 		i-=0.03;
 		
