@@ -62,8 +62,8 @@ function Start () {
 	zombieCost_arr[5,3]=0;
 	
 	//Titan Zombie cost
-	zombieCost_arr[6,0]=20;
-	zombieCost_arr[6,1]=10;
+	zombieCost_arr[6,0]=10;
+	zombieCost_arr[6,1]=5;
 	zombieCost_arr[6,2]=0;
 	zombieCost_arr[6,3]=0;
 	

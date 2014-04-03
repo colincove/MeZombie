@@ -65,14 +65,14 @@ function Update () {
 			}
 			if (speedUpgrade){
 				parent = transform.parent.gameObject;
-				if (level==0 && ResourceMaster.metal>=4){
+				if (level==0 && ResourceMaster.metal>=2){
 					level++;
 					levelUp.Play();
 					parent.GetComponent(ZombieAnimationController).setWalkAnimSpeed(2);
 					parent.GetComponent(MeleeLocomotion).speed += .5;
 					ResourceMaster.AddResource(1, -4);
 				}
-				else if (level==1 && ResourceMaster.metal>=4){
+				else if (level==1 && ResourceMaster.metal>=2){
 					level++;
 					levelUp.Play();
 					parent.GetComponent(ZombieAnimationController).setWalkAnimSpeed(3);
@@ -91,7 +91,7 @@ function Update () {
 			}
 			if (attackPowerUpgrade){
 				parent = transform.parent.gameObject;
-				if (level==0 && ResourceMaster.metal>=10 && ResourceMaster.rock>=5){
+				if (level==0 && ResourceMaster.metal>=5 && ResourceMaster.rock>=2){
 					level++;
 					levelUp.Play();
 					parent.GetComponent(StandardDamageDealer).damage += 75;
@@ -114,7 +114,7 @@ function Update () {
 						}
 					}
 				}
-				else if (level==1 && ResourceMaster.metal>=10 && ResourceMaster.metal>=5){
+				else if (level==1 && ResourceMaster.metal>=5 && ResourceMaster.metal>=2){
 					level++;
 					levelUp.Play();
 					parent.GetComponent(StandardDamageDealer).damage += 75;
