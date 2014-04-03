@@ -62,23 +62,22 @@ function Update () {
 						}
 					}
 				}
-				
 			}
 			if (speedUpgrade){
 				parent = transform.parent.gameObject;
-				if (level==0 && ResourceMaster.metal>=2){
+				if (level==0 && ResourceMaster.metal>=4){
 					level++;
 					levelUp.Play();
 					parent.GetComponent(ZombieAnimationController).setWalkAnimSpeed(2);
 					parent.GetComponent(MeleeLocomotion).speed += .5;
-					ResourceMaster.AddResource(1, -2);
+					ResourceMaster.AddResource(1, -4);
 				}
-				else if (level==1 && ResourceMaster.metal>=2){
+				else if (level==1 && ResourceMaster.metal>=4){
 					level++;
 					levelUp.Play();
 					parent.GetComponent(ZombieAnimationController).setWalkAnimSpeed(3);
 					parent.GetComponent(MeleeLocomotion).speed += .5;
-					ResourceMaster.AddResource(1, -2);
+					ResourceMaster.AddResource(1, -4);
 					
 					limbs = parent.GetComponentInChildren(Transform);
 

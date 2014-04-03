@@ -54,6 +54,12 @@ function StartMotion(){
 }
 function StopMotion(){
 	SendMessage("EnableCamera");
+	var world : GameObject;
+	// This will return the game object named Hand in the scene.
+	world = GameObject.Find("World");
+	if(world!=null){
+		world.BroadcastMessage("PlayerControlStarted", 0, SendMessageOptions.DontRequireReceiver);
+	}
 	isActive=false;
 	currentLandmark=null;
 	landmarkIndex=0;
