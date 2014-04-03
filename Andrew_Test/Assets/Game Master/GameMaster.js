@@ -13,7 +13,7 @@ function Start () {
 	if (totalWinningLandmarks<=0){
 		totalWinningLandmarks=1;
 	}
-	
+	initialLevelConditions();
 
 }
 
@@ -67,7 +67,7 @@ static function initialLevelConditions(){
 	isWin=false;
 	winCount=0;
 	isLose=false;
-	ResourceMaster.hooman=10; //temporary
+	ResourceMaster.hooman=1; //temporary
 }
 
 

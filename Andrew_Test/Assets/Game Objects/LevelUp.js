@@ -70,14 +70,14 @@ function Update () {
 					levelUp.Play();
 					parent.GetComponent(ZombieAnimationController).setWalkAnimSpeed(2);
 					parent.GetComponent(MeleeLocomotion).speed += .5;
-					ResourceMaster.AddResource(1, -4);
+					ResourceMaster.AddResource(1, -2);
 				}
 				else if (level==1 && ResourceMaster.metal>=2){
 					level++;
 					levelUp.Play();
 					parent.GetComponent(ZombieAnimationController).setWalkAnimSpeed(3);
 					parent.GetComponent(MeleeLocomotion).speed += .5;
-					ResourceMaster.AddResource(1, -4);
+					ResourceMaster.AddResource(1, -2);
 					
 					limbs = parent.GetComponentInChildren(Transform);
 
@@ -101,8 +101,8 @@ function Update () {
 						//no area of effect
 					}
 					
-					ResourceMaster.AddResource(1, -10);
-					ResourceMaster.AddResource(3, -5);
+					ResourceMaster.AddResource(1, -5);
+					ResourceMaster.AddResource(3, -2);
 					
 					limbs = parent.GetComponentInChildren(Transform);
 					
@@ -124,8 +124,8 @@ function Update () {
 						//no area of effect
 					}
 					
-					ResourceMaster.AddResource(1, -10);
-					ResourceMaster.AddResource(3, -5);
+					ResourceMaster.AddResource(1, -5);
+					ResourceMaster.AddResource(3, -2);
 					
 					limbs = parent.GetComponentInChildren(Transform);
 
