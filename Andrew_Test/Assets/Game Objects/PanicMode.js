@@ -2,13 +2,14 @@
 
 var velX :float;
 
-private var interval_start: float = 1;
+private var interval_start: float;
 private var interval: float= interval_start;
 
 private var isKilled:boolean;
 
 function Start () {
 	rigidbody2D.velocity.x = -velX;
+	interval_start = Random.Range(0.5, 1.5);
 }
 
 function Update () {

@@ -8,8 +8,8 @@ function Start () {
 
 function Update () {
 
-	//right click
-	if(Input.GetMouseButtonDown(1) && !oneTime){
+	//middle click
+	if(Input.GetMouseButtonDown(2) && !oneTime){
 		var myCollider:BoxCollider2D = GetComponent(BoxCollider2D);
 		var myCenter = myCollider.center + transform.parent.gameObject.transform.position;
 		var myLeft = myCenter.x-myCollider.size.x/2;

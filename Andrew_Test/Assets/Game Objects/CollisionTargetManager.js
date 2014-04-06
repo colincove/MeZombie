@@ -7,10 +7,12 @@ private var collisionRemovalList: List.<GameObject> = new List.<GameObject>();//
 
 function Update () {
 	for(var col:GameObject in collisionList){
-		var colGOB:GameObjectBehaviour = col.GetComponent("GameObjectBehaviour");
-		if(colGOB.dead){
-			targetComp.RemoveTarget(col);
-			collisionRemovalList.Add(col);
+		if (col!=null){
+			var colGOB:GameObjectBehaviour = col.GetComponent("GameObjectBehaviour");
+			if(colGOB.dead){
+				targetComp.RemoveTarget(col);
+				collisionRemovalList.Add(col);
+			}
 		}
 	}
 	if(collisionRemovalList.Count!=0){

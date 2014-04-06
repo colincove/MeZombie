@@ -31,8 +31,8 @@ function Update () {
 	
 	
 	
-		//left click
-		if(Input.GetMouseButtonDown(0)){
+		//right click
+		if(Input.GetMouseButtonDown(1)){
 			if (healthUpgrade){
 				var parent = transform.parent.gameObject;
 				

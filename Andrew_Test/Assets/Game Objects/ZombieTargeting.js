@@ -18,7 +18,7 @@ public class ZombieTargeting extends AbstractTargeting{
 			//should always agro a human when they are in the list. 
 			if(currentAgroTarget!=null && currentAgroTarget.tag=="Barricade"){
 				for(var i:int=0;i<targetLists.agroList.Count; i++){
-					if(targetLists.agroList[i].tag!="Barricade"){
+					if(targetLists!=null && targetLists.agroList[i] !=null && targetLists.agroList[i].tag!="Barricade"){
 						currentAgroTarget=targetLists.agroList[i];
 						break;
 					}
