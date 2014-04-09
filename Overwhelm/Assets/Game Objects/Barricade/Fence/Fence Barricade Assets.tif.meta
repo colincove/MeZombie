@@ -1,0 +1,94 @@
+fileFormatVersion: 2
+guid: 6c09b544871d954449ce19988f187b5f
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: Fence Barricade Assets_0
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 51
+        width: 53
+        height: 95
+      alignment: 9
+      pivot: {x: .0941564813, y: .0814698488}
+    - name: Fence Barricade Assets_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 69
+        width: 47
+        height: 90
+      alignment: 9
+      pivot: {x: .839772999, y: .0437335558}
+    - name: Fence Barricade Assets_2
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 31
+        width: 41
+        height: 100
+      alignment: 9
+      pivot: {x: .166146249, y: .131727681}
+    - name: Fence Barricade Assets_3
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 40
+        width: 58
+        height: 103
+      alignment: 9
+      pivot: {x: .764095426, y: .0285456385}
+    - name: Fence Barricade Assets_4
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 79
+        width: 15
+        height: 93
+      alignment: 9
+      pivot: {x: .471030682, y: .0555845834}
+  spritePackingTag: 
+  userData: 
